@@ -9,6 +9,7 @@ Semoga materi ini dapat bermanfaat bagi para pembaca.
 NAMA : HERLY NABILA SAHQI PUTRI WANDANI
 NIM : 230411100022
 PRODI : TEKNIK INFORMATIKA
+EMAIL : herlynabila75@gmail.com
 
 ```{tableofcontents}
 ```
