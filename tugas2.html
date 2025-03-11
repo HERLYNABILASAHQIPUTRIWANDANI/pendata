@@ -172,6 +172,9 @@
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="tugas1.html">Tugas1 Data mining</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Tugas 2 data_understanding</strong></a></li>
+
+
+
 </ul>
 
     </div>
@@ -364,6 +367,7 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>Tugas 2 data_understanding</strong></a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-outlier-deteksi"><strong>Penjelasan Outlier Deteksi</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deteksi-outlier-dengan-k-nearest-neighbors-knn-dalam-data-understanding"><strong>Deteksi Outlier dengan K-Nearest Neighbors (KNN) dalam Data Understanding</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pengantar-outlier-dalam-data-understanding">1. Pengantar Outlier dalam Data Understanding</a></li>
@@ -372,9 +376,28 @@
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#koneksi-dan-analisis">Koneksi dan Analisis</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#koneksi-ke-database-postgresql">Koneksi ke Database PostgreSQL</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#koneksi-ke-database-mysql">Koneksi ke Database MySQL</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#deteksi-outlier-dengan-knn">Deteksi Outlier dengan KNN</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#total-outlier">Total outlier</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#menampilkan-daftar-outlier-yang-terdeteks">Menampilkan daftar outlier yang terdeteks</a></li>
 </ul>
 </li>
 </ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#lof">LOF</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apa-itu-lof">APA ITU LOF?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bagaimana-tahapan-lof">BAGAIMANA TAHAPAN LOF?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-menghitung-manual-lof">CONTOH MENGHITUNG MANUAL LOF</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-menggunakan-sklearn">Implementasi menggunakan Sklearn</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#deteksi-outlier-menggunakan-local-outlier-factor-lof-di-sklearn">Deteksi Outlier Menggunakan Local Outlier Factor (LOF) di Sklearn</a></li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -421,37 +444,10 @@ Jika data berbentuk kategori, perlu dikonversi ke bentuk numerik atau menggunaka
 <h4>Kesimpulan<a class="headerlink" href="#kesimpulan" title="Link to this heading">#</a></h4>
 <p>K-Nearest Neighbors (KNN) adalah metode berbasis jarak yang dapat digunakan untuk mendeteksi outlier dengan mengukur kedekatan suatu titik terhadap tetangga terdekatnya. KNN cocok digunakan ketika dataset berukuran kecil hingga menengah, tidak memiliki asumsi distribusi tertentu, dan outlier dapat diidentifikasi berdasarkan jarak.</p>
 <p>Namun, KNN kurang efisien untuk dataset yang sangat besar atau berdimensi tinggi karena memerlukan banyak perhitungan jarak. Selain itu, jika outlier tidak dapat dideteksi hanya berdasarkan jarak, metode lain seperti DBSCAN, Isolation Forest, atau Autoencoder mungkin lebih efektif. Oleh karena itu, pemilihan metode deteksi outlier harus disesuaikan dengan karakteristik dataset dan tujuan analisis.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">pip</span> install pymysql
-<span class="o">%</span><span class="k">pip</span> install psycopg2
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: pymysql in /usr/local/python/3.12.1/lib/python3.12/site-packages (1.1.1)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">[</span><span class=" -Color -Color-Blue">notice</span><span class=" -Color -Color-Bold">]</span> A new release of pip is available: <span class=" -Color -Color-Red">24.3.1</span> -&gt; <span class=" -Color -Color-Green">25.0.1</span>
-<span class=" -Color -Color-Bold">[</span><span class=" -Color -Color-Blue">notice</span><span class=" -Color -Color-Bold">]</span> To update, run: <span class=" -Color -Color-Green">python3 -m pip install --upgrade pip</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Note: you may need to restart the kernel to use updated packages.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: psycopg2 in /usr/local/python/3.12.1/lib/python3.12/site-packages (2.9.10)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">[</span><span class=" -Color -Color-Blue">notice</span><span class=" -Color -Color-Bold">]</span> A new release of pip is available: <span class=" -Color -Color-Red">24.3.1</span> -&gt; <span class=" -Color -Color-Green">25.0.1</span>
-<span class=" -Color -Color-Bold">[</span><span class=" -Color -Color-Blue">notice</span><span class=" -Color -Color-Bold">]</span> To update, run: <span class=" -Color -Color-Green">python3 -m pip install --upgrade pip</span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Note: you may need to restart the kernel to use updated packages.
-</pre></div>
-</div>
-</div>
-</div>
-<p>####Koneksi dan Analisis</p>
+</section>
+</section>
+<section id="koneksi-dan-analisis">
+<h3>Koneksi dan Analisis<a class="headerlink" href="#koneksi-dan-analisis" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Menghubungkan ke Database</p>
 <ul>
@@ -491,8 +487,9 @@ Jika data berbentuk kategori, perlu dikonversi ke bentuk numerik atau menggunaka
 </div>
 </div>
 </div>
-<p>####Koneksi ke Database PostgreSQL
-Menggunakan psycopg2.connect() untuk membuat koneksi ke database PostgreSQL.</p>
+<section id="koneksi-ke-database-postgresql">
+<h4>Koneksi ke Database PostgreSQL<a class="headerlink" href="#koneksi-ke-database-postgresql" title="Link to this heading">#</a></h4>
+<p>Menggunakan psycopg2.connect() untuk membuat koneksi ke database PostgreSQL.</p>
 <p>Parameter koneksi:</p>
 <p>host → Alamat server database.</p>
 <p>user → Nama pengguna database.</p>
@@ -520,8 +517,10 @@ Menggunakan psycopg2.connect() untuk membuat koneksi ke database PostgreSQL.</p>
 </div>
 </div>
 </div>
-<p>####Koneksi ke Database MySQL
-Menggunakan pymysql.connect() untuk membuat koneksi ke database MySQL.</p>
+</section>
+<section id="koneksi-ke-database-mysql">
+<h4>Koneksi ke Database MySQL<a class="headerlink" href="#koneksi-ke-database-mysql" title="Link to this heading">#</a></h4>
+<p>Menggunakan pymysql.connect() untuk membuat koneksi ke database MySQL.</p>
 <p>Parameter koneksi:</p>
 <p>host → Alamat server database.</p>
 <p>user → Nama pengguna database.</p>
@@ -549,8 +548,10 @@ Menggunakan pymysql.connect() untuk membuat koneksi ke database MySQL.</p>
 </div>
 </div>
 </div>
-<p>####Deteksi Outlier dengan KNN
-Kode ini bertujuan untuk mengambil data dari PostgreSQL dan MySQL, menggabungkannya, lalu mengidentifikasi outlier menggunakan metode K-Nearest Neighbors (KNN).</p>
+</section>
+<section id="deteksi-outlier-dengan-knn">
+<h4>Deteksi Outlier dengan KNN<a class="headerlink" href="#deteksi-outlier-dengan-knn" title="Link to this heading">#</a></h4>
+<p>Kode ini bertujuan untuk mengambil data dari PostgreSQL dan MySQL, menggabungkannya, lalu mengidentifikasi outlier menggunakan metode K-Nearest Neighbors (KNN).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ambil data dari kedua database</span>
@@ -757,8 +758,10 @@ Kode ini bertujuan untuk mengambil data dari PostgreSQL dan MySQL, menggabungkan
 <img alt="_images/2bd841a2225a1bf9e623ef0800141d23cb360bb13b9cde07ecc7290d360c7365.png" src="_images/2bd841a2225a1bf9e623ef0800141d23cb360bb13b9cde07ecc7290d360c7365.png" />
 </div>
 </div>
-<p>####Total outlier
-Kode berikut digunakan untuk menghitung total jumlah outlier yang terdeteksi dalam dataset</p>
+</section>
+<section id="total-outlier">
+<h4>Total outlier<a class="headerlink" href="#total-outlier" title="Link to this heading">#</a></h4>
+<p>Kode berikut digunakan untuk menghitung total jumlah outlier yang terdeteksi dalam dataset</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Hitung total outlier</span>
@@ -773,7 +776,9 @@ Kode berikut digunakan untuk menghitung total jumlah outlier yang terdeteksi dal
 </div>
 </div>
 </div>
-<p>####Menampilkan daftar outlier yang terdeteks</p>
+</section>
+<section id="menampilkan-daftar-outlier-yang-terdeteks">
+<h4>Menampilkan daftar outlier yang terdeteks<a class="headerlink" href="#menampilkan-daftar-outlier-yang-terdeteks" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">outliers</span> <span class="o">=</span> <span class="n">df_merged</span><span class="p">[</span><span class="n">df_merged</span><span class="p">[</span><span class="s2">&quot;outlier&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;knn_distance&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -793,6 +798,175 @@ Kode berikut digunakan untuk menghitung total jumlah outlier yang terdeteksi dal
 119 Iris-virginica           6.9          2.3           7.7          2.6      0.749237     True
  42    Iris-setosa           1.3          0.3           4.5          2.3      0.736302     True
 110 Iris-virginica           6.1          2.5           7.2          3.6      0.714318     True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#### Mengurutkan data by KNN</span>
+
+<span class="c1"># Urutkan data berdasarkan jarak dari terkecil ke terbesar</span>
+<span class="n">df_sorted</span> <span class="o">=</span> <span class="n">df_merged</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;knn_distance&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Tampilkan hasilnya</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_sorted</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> id           class  petal_length  petal_width  sepal_length  sepal_width  knn_distance  outlier
+ 10     Iris-setosa           1.5          0.1           4.9          3.1      0.109282    False
+ 35     Iris-setosa           1.5          0.1           4.9          3.1      0.109282    False
+ 38     Iris-setosa           1.5          0.1           4.9          3.1      0.109282    False
+  1     Iris-setosa           1.4          0.2           5.1          3.5      0.133137    False
+ 40     Iris-setosa           1.5          0.2           5.1          3.4      0.139494    False
+ 18     Iris-setosa           1.4          0.3           5.1          3.5      0.152207    False
+ 28     Iris-setosa           1.5          0.2           5.2          3.5      0.164215    False
+ 29     Iris-setosa           1.4          0.2           5.2          3.4      0.164215    False
+  8     Iris-setosa           1.5          0.2           5.0          3.4      0.167647    False
+ 31     Iris-setosa           1.6          0.2           4.8          3.1      0.176929    False
+ 48     Iris-setosa           1.4          0.2           4.6          3.2      0.190733    False
+  5     Iris-setosa           1.4          0.2           5.0          3.6      0.191277    False
+ 13     Iris-setosa           1.4          0.1           4.8          3.0      0.192913    False
+ 41     Iris-setosa           1.3          0.3           5.0          3.5      0.195546    False
+ 97 Iris-versicolor           4.2          1.3           5.7          2.9      0.195931    False
+ 50     Iris-setosa           1.4          0.2           5.0          3.3      0.197089    False
+ 30     Iris-setosa           1.6          0.2           4.7          3.2      0.205283    False
+  4     Iris-setosa           1.5          0.2           4.6          3.1      0.209551    False
+100 Iris-versicolor           4.1          1.3           5.7          2.8      0.209551    False
+ 49     Iris-setosa           1.5          0.2           5.3          3.7      0.219269    False
+ 20     Iris-setosa           1.5          0.3           5.1          3.8      0.221719    False
+ 26     Iris-setosa           1.6          0.2           5.0          3.0      0.224721    False
+ 27     Iris-setosa           1.6          0.4           5.0          3.4      0.231348    False
+ 22     Iris-setosa           1.5          0.4           5.1          3.7      0.235747    False
+  3     Iris-setosa           1.3          0.2           4.7          3.2      0.236019    False
+ 39     Iris-setosa           1.3          0.2           4.4          3.0      0.237274    False
+ 93 Iris-versicolor           4.0          1.2           5.8          2.6      0.246350    False
+ 46     Iris-setosa           1.4          0.3           4.8          3.0      0.247735    False
+ 70 Iris-versicolor           3.9          1.1           5.6          2.5      0.249461    False
+ 96 Iris-versicolor           4.2          1.2           5.7          3.0      0.250359    False
+ 89 Iris-versicolor           4.1          1.3           5.6          3.0      0.252082    False
+ 47     Iris-setosa           1.6          0.2           5.1          3.8      0.252596    False
+102  Iris-virginica           5.1          1.9           5.8          2.7      0.254604    False
+143  Iris-virginica           5.1          1.9           5.8          2.7      0.254604    False
+ 95 Iris-versicolor           4.2          1.3           5.6          2.7      0.255523    False
+ 76 Iris-versicolor           4.4          1.4           6.6          3.0      0.256680    False
+128  Iris-virginica           4.9          1.8           6.1          3.0      0.265954    False
+ 12     Iris-setosa           1.6          0.2           4.8          3.4      0.266011    False
+ 83 Iris-versicolor           3.9          1.2           5.8          2.7      0.267050    False
+ 81 Iris-versicolor           3.8          1.1           5.5          2.4      0.267778    False
+ 43     Iris-setosa           1.3          0.2           4.4          3.2      0.267967    False
+ 11     Iris-setosa           1.5          0.2           5.4          3.7      0.269234    False
+ 92 Iris-versicolor           4.6          1.4           6.1          3.0      0.275026    False
+ 90 Iris-versicolor           4.0          1.3           5.5          2.5      0.275322    False
+139  Iris-virginica           4.8          1.8           6.0          3.0      0.279998    False
+  7     Iris-setosa           1.4          0.3           4.6          3.4      0.284127    False
+ 59 Iris-versicolor           4.6          1.3           6.6          2.9      0.287716    False
+121  Iris-virginica           5.7          2.3           6.9          3.2      0.289747    False
+  9     Iris-setosa           1.4          0.2           4.4          2.9      0.292923    False
+ 64 Iris-versicolor           4.7          1.4           6.1          2.9      0.294026    False
+ 79 Iris-versicolor           4.5          1.5           6.0          2.9      0.299437    False
+ 66 Iris-versicolor           4.4          1.4           6.7          3.1      0.301517    False
+129  Iris-virginica           5.6          2.1           6.4          2.8      0.301871    False
+127  Iris-virginica           4.8          1.8           6.2          2.8      0.302512    False
+124  Iris-virginica           4.9          1.8           6.3          2.7      0.302686    False
+117  Iris-virginica           5.5          1.8           6.5          3.0      0.304304    False
+ 32     Iris-setosa           1.5          0.4           5.4          3.4      0.309096    False
+141  Iris-virginica           5.6          2.4           6.7          3.1      0.312580    False
+ 36     Iris-setosa           1.2          0.2           5.0          3.2      0.312863    False
+144  Iris-virginica           5.9          2.3           6.8          3.2      0.317954    False
+ 87 Iris-versicolor           4.7          1.5           6.7          3.1      0.318674    False
+ 68 Iris-versicolor           4.1          1.0           5.8          2.7      0.318835    False
+ 75 Iris-versicolor           4.3          1.3           6.4          2.9      0.319945    False
+ 44     Iris-setosa           1.6          0.6           5.0          3.5      0.320568    False
+ 98 Iris-versicolor           4.3          1.3           6.2          2.9      0.322356    False
+ 24     Iris-setosa           1.7          0.5           5.1          3.3      0.322668    False
+150  Iris-virginica           5.1          1.8           5.9          3.0      0.324590    False
+ 82 Iris-versicolor           3.7          1.0           5.5          2.4      0.324837    False
+113  Iris-virginica           5.5          2.1           6.8          3.0      0.325700    False
+104  Iris-virginica           5.6          1.8           6.3          2.9      0.326625    False
+ 56 Iris-versicolor           4.5          1.3           5.7          2.8      0.327657    False
+ 37     Iris-setosa           1.3          0.2           5.5          3.5      0.330971    False
+ 21     Iris-setosa           1.7          0.2           5.4          3.4      0.332902    False
+138  Iris-virginica           5.5          1.8           6.4          3.1      0.333563    False
+148  Iris-virginica           5.2          2.0           6.5          3.0      0.335685    False
+140  Iris-virginica           5.4          2.1           6.9          3.1      0.336158    False
+ 54 Iris-versicolor           4.0          1.3           5.5          2.3      0.337602    False
+ 52 Iris-versicolor           4.5          1.5           6.4          3.2      0.337735    False
+ 55 Iris-versicolor           4.6          1.5           6.5          2.8      0.339361    False
+145  Iris-virginica           5.7          2.5           6.7          3.3      0.339413    False
+146  Iris-virginica           5.2          2.3           6.7          3.0      0.342878    False
+ 53 Iris-versicolor           4.9          1.5           6.9          3.1      0.343992    False
+ 67 Iris-versicolor           4.5          1.5           5.6          3.0      0.344775    False
+ 62 Iris-versicolor           4.2          1.5           5.9          3.0      0.345388    False
+133  Iris-virginica           5.6          2.2           6.4          2.8      0.345839    False
+105  Iris-virginica           5.8          2.2           6.5          3.0      0.350276    False
+125  Iris-virginica           5.7          2.1           6.7          3.3      0.350372    False
+ 71 Iris-versicolor           4.8          1.8           5.9          3.2      0.355494    False
+  6     Iris-setosa           1.7          0.4           5.4          3.9      0.360018    False
+ 74 Iris-versicolor           4.7          1.2           6.1          2.8      0.361011    False
+ 77 Iris-versicolor           4.8          1.4           6.8          2.8      0.361496    False
+116  Iris-virginica           5.3          2.3           6.4          3.2      0.364586    False
+ 84 Iris-versicolor           5.1          1.6           6.0          2.7      0.367850    False
+ 91 Iris-versicolor           4.4          1.2           5.5          2.6      0.370719    False
+ 72 Iris-versicolor           4.0          1.3           6.1          2.8      0.372910    False
+112  Iris-virginica           5.3          1.9           6.4          2.7      0.373868    False
+ 17     Iris-setosa           1.3          0.4           5.4          3.9      0.376312    False
+ 14     Iris-setosa           1.1          0.1           4.3          3.0      0.377434    False
+147  Iris-virginica           5.0          1.9           6.3          2.5      0.379661    False
+122  Iris-virginica           4.9          2.0           5.6          2.8      0.382455    False
+111  Iris-virginica           5.1          2.0           6.5          3.2      0.383068    False
+114  Iris-virginica           5.0          2.0           5.7          2.5      0.385630    False
+ 33     Iris-setosa           1.5          0.1           5.2          4.1      0.389902    False
+ 78 Iris-versicolor           5.0          1.7           6.7          3.0      0.390246    False
+ 25     Iris-setosa           1.9          0.2           4.8          3.4      0.391591    False
+134  Iris-virginica           5.1          1.5           6.3          2.8      0.392106    False
+ 57 Iris-versicolor           4.7          1.6           6.3          3.3      0.395904    False
+ 34     Iris-setosa           1.4          0.2           5.5          4.2      0.397231    False
+137  Iris-virginica           5.6          2.4           6.3          3.4      0.398480    False
+ 73 Iris-versicolor           4.9          1.5           6.3          2.5      0.398715    False
+ 51 Iris-versicolor           4.7          1.4           7.0          3.2      0.402000    False
+ 45     Iris-setosa           1.9          0.4           5.1          3.8      0.407785    False
+ 85 Iris-versicolor           4.5          1.5           5.4          3.0      0.418339    False
+142  Iris-virginica           5.1          2.3           6.9          3.1      0.420813    False
+ 80 Iris-versicolor           3.5          1.0           5.7          2.6      0.424564    False
+103  Iris-virginica           5.9          2.1           7.1          3.0      0.431573    False
+ 19     Iris-setosa           1.7          0.3           5.7          3.8      0.443504    False
+ 86 Iris-versicolor           4.5          1.6           6.0          3.4      0.447126    False
+131  Iris-virginica           6.1          1.9           7.4          2.8      0.448059    False
+ 94 Iris-versicolor           3.3          1.0           5.0          2.3      0.451692    False
+126  Iris-virginica           6.0          1.8           7.2          3.2      0.457343    False
+108  Iris-virginica           6.3          1.8           7.3          2.9      0.466823    False
+149  Iris-virginica           5.4          2.3           6.2          3.4      0.468533    False
+ 65 Iris-versicolor           3.6          1.3           5.6          2.9      0.487902    False
+ 60 Iris-versicolor           3.9          1.4           5.2          2.7      0.496896    False
+ 58 Iris-versicolor           3.3          1.0           4.9          2.4      0.499098    False
+106  Iris-virginica           6.6          2.1           7.6          3.0      0.499489    False
+ 15     Iris-setosa           1.2          0.2           5.8          4.0      0.513789    False
+ 23     Iris-setosa           1.0          0.2           4.6          3.6      0.518395    False
+101  Iris-virginica           6.0          2.5           6.3          3.3      0.519844    False
+130  Iris-virginica           5.8          1.6           7.2          3.0      0.527962    False
+ 88 Iris-versicolor           4.4          1.3           6.3          2.3      0.531071    False
+123  Iris-virginica           6.7          2.0           7.7          2.8      0.532679    False
+115  Iris-virginica           5.1          2.4           5.8          2.8      0.533926    False
+ 69 Iris-versicolor           4.5          1.5           6.2          2.2      0.539667    False
+ 63 Iris-versicolor           4.0          1.0           6.0          2.2      0.544685    False
+120  Iris-virginica           5.0          1.5           6.0          2.2      0.546572    False
+ 16     Iris-setosa           1.5          0.4           5.7          4.4      0.556295    False
+ 61 Iris-versicolor           3.5          1.0           5.0          2.0      0.584977    False
+109  Iris-virginica           5.8          1.8           6.7          2.5      0.602832    False
+135  Iris-virginica           5.6          1.4           6.1          2.6      0.608343    False
+ 99 Iris-versicolor           3.0          1.1           5.1          2.5      0.621594    False
+136  Iris-virginica           6.1          2.3           7.7          3.0      0.625559    False
+110  Iris-virginica           6.1          2.5           7.2          3.6      0.714318     True
+ 42     Iris-setosa           1.3          0.3           4.5          2.3      0.736302     True
+119  Iris-virginica           6.9          2.3           7.7          2.6      0.749237     True
+107  Iris-virginica           4.5          1.7           4.9          2.5      0.810164     True
+118  Iris-virginica           6.7          2.2           7.7          3.8      0.823174     True
+132  Iris-virginica           6.4          2.0           7.9          3.8      0.836056     True
+151             ???           5.1          3.2           5.8          1.0      2.035647     True
+  2     Iris-setosa          14.0          2.0          40.9         30.0     43.258305     True
 </pre></div>
 </div>
 </div>
@@ -924,56 +1098,18 @@ Kode berikut digunakan untuk menghitung total jumlah outlier yang terdeteksi dal
 </div>
 </div>
 </div>
-<p>####Mengurutkan data by KNN</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Urutkan data berdasarkan jarak dari terkecil ke terbesar</span>
-<span class="n">df_sorted</span> <span class="o">=</span> <span class="n">df_merged</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;knn_distance&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="c1"># Tampilkan hasilnya</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df_sorted</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="nn">/tmp/ipykernel_4928/3867776731.py</span> in <span class="ni">?</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Urutkan data berdasarkan jarak dari terkecil ke terbesar</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">df_sorted</span> <span class="o">=</span> <span class="n">df_merged</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;knn_distance&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> 
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># Tampilkan hasilnya</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="nb">print</span><span class="p">(</span><span class="n">df_sorted</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
-
-<span class="nn">~/.local/lib/python3.12/site-packages/pandas/core/frame.py</span> in <span class="ni">?</span><span class="nt">(self, by, axis, ascending, inplace, kind, na_position, ignore_index, key)</span>
-<span class="g g-Whitespace">   </span><span class="mi">7185</span>             <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">7186</span>         <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">by</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">7187</span>             <span class="c1"># len(by) == 1</span>
-<span class="g g-Whitespace">   </span><span class="mi">7188</span> 
-<span class="ne">-&gt; </span><span class="mi">7189</span>             <span class="n">k</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_label_or_level_values</span><span class="p">(</span><span class="n">by</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">7190</span> 
-<span class="g g-Whitespace">   </span><span class="mi">7191</span>             <span class="c1"># need to rewrap column in Series to apply key function</span>
-<span class="g g-Whitespace">   </span><span class="mi">7192</span>             <span class="k">if</span> <span class="n">key</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-
-<span class="nn">~/.local/lib/python3.12/site-packages/pandas/core/generic.py</span> in <span class="ni">?</span><span class="nt">(self, key, axis)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1907</span>             <span class="n">values</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">xs</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">other_axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">_values</span>
-<span class="g g-Whitespace">   </span><span class="mi">1908</span>         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_level_reference</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1909</span>             <span class="n">values</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="o">.</span><span class="n">_values</span>
-<span class="g g-Whitespace">   </span><span class="mi">1910</span>         <span class="k">else</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1911</span>             <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1912</span> 
-<span class="g g-Whitespace">   </span><span class="mi">1913</span>         <span class="c1"># Check for duplicates</span>
-<span class="g g-Whitespace">   </span><span class="mi">1914</span>         <span class="k">if</span> <span class="n">values</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
-
-<span class="ne">KeyError</span>: &#39;knn_distance&#39;
-</pre></div>
-</div>
-</div>
-</div>
-<p>#LOF
-##APA ITU LOF?
-Local Outlier Factor (LOF) adalah algoritma deteksi anomali tanpa pengawasan yang mengevaluasi seberapa jauh kepadatan suatu titik data dibandingkan dengan tetangganya. Jika suatu sampel memiliki kepadatan yang jauh lebih rendah dibandingkan dengan lingkungan sekitarnya, maka dianggap sebagai outlier. Metode ini sering digunakan untuk mengidentifikasi data yang tidak normal, dan merupakan salah satu pendekatan utama dalam deteksi anomali di scikit-learn.</p>
-<p>##BAGAIMANA TAHAPAN LOF?</p>
+</section>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="lof">
+<h1>LOF<a class="headerlink" href="#lof" title="Link to this heading">#</a></h1>
+<section id="apa-itu-lof">
+<h2>APA ITU LOF?<a class="headerlink" href="#apa-itu-lof" title="Link to this heading">#</a></h2>
+<p>Local Outlier Factor (LOF) adalah algoritma deteksi anomali tanpa pengawasan yang mengevaluasi seberapa jauh kepadatan suatu titik data dibandingkan dengan tetangganya. Jika suatu sampel memiliki kepadatan yang jauh lebih rendah dibandingkan dengan lingkungan sekitarnya, maka dianggap sebagai outlier. Metode ini sering digunakan untuk mengidentifikasi data yang tidak normal, dan merupakan salah satu pendekatan utama dalam deteksi anomali di scikit-learn.</p>
+</section>
+<section id="bagaimana-tahapan-lof">
+<h2>BAGAIMANA TAHAPAN LOF?<a class="headerlink" href="#bagaimana-tahapan-lof" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Tentukan K-Tetangga Terdekat (k-nearest neighbors)
 Setiap titik data dihitung jaraknya ke sejumlah tetangga terdekatnya (misalnya 5 atau 10 tetangga).</p></li>
@@ -991,8 +1127,10 @@ $<span class="math notranslate nohighlight">\(\text{LRD}(A) = \frac{1}{\frac{1}{
 </ul>
 <div class="math notranslate nohighlight">
 \[\text{LOF}_k(A) = \frac{\sum_{B \in N_k(A)} \frac{\text{LRD}_k(B)}{\text{LRD}_k(A)}}{|N_k(A)|} \]</div>
-<p>##CONTOH MENGHITUNG MANUAL LOF
-Misalkan kita punya 4 titik data dalam 2 dimensi:
+</section>
+<section id="contoh-menghitung-manual-lof">
+<h2>CONTOH MENGHITUNG MANUAL LOF<a class="headerlink" href="#contoh-menghitung-manual-lof" title="Link to this heading">#</a></h2>
+<p>Misalkan kita punya 4 titik data dalam 2 dimensi:
 <img alt="image.png" src="data:image/png;base64,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" /></p>
 <p>Kita akan menghitung LOF untuk titik D menggunakan k = 2 (2-nearest neighbors).</p>
 <p>Rumus jarak Euclidean antara dua titik <span class="math notranslate nohighlight">\(\left(x_1, y_1\right)\)</span> dan <span class="math notranslate nohighlight">\(\left(x_2, y_2\right)\)</span> :
@@ -1050,7 +1188,10 @@ $<span class="math notranslate nohighlight">\(
 <p>Jika LOF ≈ 1, berarti titik tersebut normal.
 Jika LOF &gt; 1, berarti titik tersebut outlier.
 LOF(D) ≈ 5.8, artinya titik D adalah outlier!</p>
-<p>#Implementasi menggunakan Sklearn</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="implementasi-menggunakan-sklearn">
+<h1>Implementasi menggunakan Sklearn<a class="headerlink" href="#implementasi-menggunakan-sklearn" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -1138,11 +1279,13 @@ LOF(D) ≈ 5.8, artinya titik D adalah outlier!</p>
  10 Iris-setosa           1.5          0.1    False
 </pre></div>
 </div>
-<img alt="_images/6e8e44a1282f31c57e2a6521ecc6336f578e8dfc16954a09c696fc9c1d4f5ce6.png" src="_images/6e8e44a1282f31c57e2a6521ecc6336f578e8dfc16954a09c696fc9c1d4f5ce6.png" />
-<img alt="_images/f51adb73523e1b4b8029eacf5afad16a0752f292429074fa4a796d03a3baf982.png" src="_images/f51adb73523e1b4b8029eacf5afad16a0752f292429074fa4a796d03a3baf982.png" />
+<img alt="_images/8d4681fdb11db64c71037a7542575d97e5af0a4f63545902588329b8e0ddeb52.png" src="_images/8d4681fdb11db64c71037a7542575d97e5af0a4f63545902588329b8e0ddeb52.png" />
+<img alt="_images/2bd841a2225a1bf9e623ef0800141d23cb360bb13b9cde07ecc7290d360c7365.png" src="_images/2bd841a2225a1bf9e623ef0800141d23cb360bb13b9cde07ecc7290d360c7365.png" />
 </div>
 </div>
-<p>#Deteksi Outlier Menggunakan Local Outlier Factor (LOF) di Sklearn</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="deteksi-outlier-menggunakan-local-outlier-factor-lof-di-sklearn">
+<h1>Deteksi Outlier Menggunakan Local Outlier Factor (LOF) di Sklearn<a class="headerlink" href="#deteksi-outlier-menggunakan-local-outlier-factor-lof-di-sklearn" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span>  <span class="n">LocalOutlierFactor</span>
@@ -1184,9 +1327,6 @@ LOF(D) ≈ 5.8, artinya titik D adalah outlier!</p>
 </div>
 </div>
 </div>
-</section>
-</section>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1245,6 +1385,7 @@ LOF(D) ≈ 5.8, artinya titik D adalah outlier!</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>Tugas 2 data_understanding</strong></a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-outlier-deteksi"><strong>Penjelasan Outlier Deteksi</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deteksi-outlier-dengan-k-nearest-neighbors-knn-dalam-data-understanding"><strong>Deteksi Outlier dengan K-Nearest Neighbors (KNN) dalam Data Understanding</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pengantar-outlier-dalam-data-understanding">1. Pengantar Outlier dalam Data Understanding</a></li>
@@ -1253,9 +1394,28 @@ LOF(D) ≈ 5.8, artinya titik D adalah outlier!</p>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan">Kesimpulan</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#koneksi-dan-analisis">Koneksi dan Analisis</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#koneksi-ke-database-postgresql">Koneksi ke Database PostgreSQL</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#koneksi-ke-database-mysql">Koneksi ke Database MySQL</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#deteksi-outlier-dengan-knn">Deteksi Outlier dengan KNN</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#total-outlier">Total outlier</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#menampilkan-daftar-outlier-yang-terdeteks">Menampilkan daftar outlier yang terdeteks</a></li>
 </ul>
 </li>
 </ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#lof">LOF</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apa-itu-lof">APA ITU LOF?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bagaimana-tahapan-lof">BAGAIMANA TAHAPAN LOF?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-menghitung-manual-lof">CONTOH MENGHITUNG MANUAL LOF</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-menggunakan-sklearn">Implementasi menggunakan Sklearn</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#deteksi-outlier-menggunakan-local-outlier-factor-lof-di-sklearn">Deteksi Outlier Menggunakan Local Outlier Factor (LOF) di Sklearn</a></li>
+</ul>
+
   </nav></div>
 
 </div></div>
