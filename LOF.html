@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>&lt;no title&gt; &#8212; 23-022 HERLY NABILA SAHQI PUTRI WANDANI</title>
+    <title>LOF &#8212; 23-022 HERLY NABILA SAHQI PUTRI WANDANI</title>
   
   
   
@@ -169,9 +169,12 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="tugas1.html">Tugas1 Data mining</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="tugas2.html"><strong>Tugas 2 Data Understanding</strong></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="simple">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="tugas2.html"><strong>Tugas 2 Data Understanding</strong></a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">LOF</a></li>
+
+
 </ul>
 </details></li>
 </ul>
@@ -356,7 +359,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>LOF</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -365,7 +368,19 @@
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">LOF</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apa-itu-lof">APA ITU LOF?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bagaimana-tahapan-lof">BAGAIMANA TAHAPAN LOF?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-menghitung-manual-lof">CONTOH MENGHITUNG MANUAL LOF</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#koneksi-ke-database-postgresql">Koneksi ke Database PostgreSQL</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#koneksi-ke-database-mysql">Koneksi ke Database MySQL</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-menggunakan-sklearn">Implementasi menggunakan Sklearn</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#deteksi-outlier-menggunakan-local-outlier-factor-lof-di-sklearn">Deteksi Outlier Menggunakan Local Outlier Factor (LOF) di Sklearn</a></li>
 </ul>
 
             </nav>
@@ -378,10 +393,14 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <p>#LOF
-##APA ITU LOF?
-Local Outlier Factor (LOF) adalah algoritma deteksi anomali tanpa pengawasan yang mengevaluasi seberapa jauh kepadatan suatu titik data dibandingkan dengan tetangganya. Jika suatu sampel memiliki kepadatan yang jauh lebih rendah dibandingkan dengan lingkungan sekitarnya, maka dianggap sebagai outlier. Metode ini sering digunakan untuk mengidentifikasi data yang tidak normal, dan merupakan salah satu pendekatan utama dalam deteksi anomali di scikit-learn.</p>
-<p>##BAGAIMANA TAHAPAN LOF?</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="lof">
+<h1>LOF<a class="headerlink" href="#lof" title="Link to this heading">#</a></h1>
+<section id="apa-itu-lof">
+<h2>APA ITU LOF?<a class="headerlink" href="#apa-itu-lof" title="Link to this heading">#</a></h2>
+<p>Local Outlier Factor (LOF) adalah algoritma deteksi anomali tanpa pengawasan yang mengevaluasi seberapa jauh kepadatan suatu titik data dibandingkan dengan tetangganya. Jika suatu sampel memiliki kepadatan yang jauh lebih rendah dibandingkan dengan lingkungan sekitarnya, maka dianggap sebagai outlier. Metode ini sering digunakan untuk mengidentifikasi data yang tidak normal, dan merupakan salah satu pendekatan utama dalam deteksi anomali di scikit-learn.</p>
+</section>
+<section id="bagaimana-tahapan-lof">
+<h2>BAGAIMANA TAHAPAN LOF?<a class="headerlink" href="#bagaimana-tahapan-lof" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Tentukan K-Tetangga Terdekat (k-nearest neighbors)
 Setiap titik data dihitung jaraknya ke sejumlah tetangga terdekatnya (misalnya 5 atau 10 tetangga).</p></li>
@@ -399,8 +418,10 @@ $<span class="math notranslate nohighlight">\(\text{LRD}(A) = \frac{1}{\frac{1}{
 </ul>
 <div class="math notranslate nohighlight">
 \[\text{LOF}_k(A) = \frac{\sum_{B \in N_k(A)} \frac{\text{LRD}_k(B)}{\text{LRD}_k(A)}}{|N_k(A)|} \]</div>
-<p>##CONTOH MENGHITUNG MANUAL LOF
-Misalkan kita punya 4 titik data dalam 2 dimensi:
+</section>
+<section id="contoh-menghitung-manual-lof">
+<h2>CONTOH MENGHITUNG MANUAL LOF<a class="headerlink" href="#contoh-menghitung-manual-lof" title="Link to this heading">#</a></h2>
+<p>Misalkan kita punya 4 titik data dalam 2 dimensi:
 <img alt="image.png" src="data:image/png;base64,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" /></p>
 <p>Kita akan menghitung LOF untuk titik D menggunakan k = 2 (2-nearest neighbors).</p>
 <p>Rumus jarak Euclidean antara dua titik <span class="math notranslate nohighlight">\(\left(x_1, y_1\right)\)</span> dan <span class="math notranslate nohighlight">\(\left(x_2, y_2\right)\)</span> :
@@ -502,8 +523,9 @@ LOF(D) ≈ 5.8, artinya titik D adalah outlier!</p>
 </div>
 </div>
 </div>
-<p>####Koneksi ke Database PostgreSQL
-Menggunakan psycopg2.connect() untuk membuat koneksi ke database PostgreSQL.</p>
+<section id="koneksi-ke-database-postgresql">
+<h3>Koneksi ke Database PostgreSQL<a class="headerlink" href="#koneksi-ke-database-postgresql" title="Link to this heading">#</a></h3>
+<p>Menggunakan psycopg2.connect() untuk membuat koneksi ke database PostgreSQL.</p>
 <p>Parameter koneksi:</p>
 <p>host → Alamat server database.</p>
 <p>user → Nama pengguna database.</p>
@@ -531,8 +553,10 @@ Menggunakan psycopg2.connect() untuk membuat koneksi ke database PostgreSQL.</p>
 </div>
 </div>
 </div>
-<p>####Koneksi ke Database MySQL
-Menggunakan pymysql.connect() untuk membuat koneksi ke database MySQL.</p>
+</section>
+<section id="koneksi-ke-database-mysql">
+<h3>Koneksi ke Database MySQL<a class="headerlink" href="#koneksi-ke-database-mysql" title="Link to this heading">#</a></h3>
+<p>Menggunakan pymysql.connect() untuk membuat koneksi ke database MySQL.</p>
 <p>Parameter koneksi:</p>
 <p>host → Alamat server database.</p>
 <p>user → Nama pengguna database.</p>
@@ -560,7 +584,11 @@ Menggunakan pymysql.connect() untuk membuat koneksi ke database MySQL.</p>
 </div>
 </div>
 </div>
-<p>#Implementasi menggunakan Sklearn</p>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="implementasi-menggunakan-sklearn">
+<h1>Implementasi menggunakan Sklearn<a class="headerlink" href="#implementasi-menggunakan-sklearn" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -652,7 +680,9 @@ Menggunakan pymysql.connect() untuk membuat koneksi ke database MySQL.</p>
 <img alt="_images/2bd841a2225a1bf9e623ef0800141d23cb360bb13b9cde07ecc7290d360c7365.png" src="_images/2bd841a2225a1bf9e623ef0800141d23cb360bb13b9cde07ecc7290d360c7365.png" />
 </div>
 </div>
-<p>#Deteksi Outlier Menggunakan Local Outlier Factor (LOF) di Sklearn</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="deteksi-outlier-menggunakan-local-outlier-factor-lof-di-sklearn">
+<h1>Deteksi Outlier Menggunakan Local Outlier Factor (LOF) di Sklearn<a class="headerlink" href="#deteksi-outlier-menggunakan-local-outlier-factor-lof-di-sklearn" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span>  <span class="n">LocalOutlierFactor</span>
@@ -828,6 +858,7 @@ Menggunakan pymysql.connect() untuk membuat koneksi ke database MySQL.</p>
 <img alt="_images/2bd841a2225a1bf9e623ef0800141d23cb360bb13b9cde07ecc7290d360c7365.png" src="_images/2bd841a2225a1bf9e623ef0800141d23cb360bb13b9cde07ecc7290d360c7365.png" />
 </div>
 </div>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -884,7 +915,19 @@ Menggunakan pymysql.connect() untuk membuat koneksi ke database MySQL.</p>
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">LOF</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apa-itu-lof">APA ITU LOF?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bagaimana-tahapan-lof">BAGAIMANA TAHAPAN LOF?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-menghitung-manual-lof">CONTOH MENGHITUNG MANUAL LOF</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#koneksi-ke-database-postgresql">Koneksi ke Database PostgreSQL</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#koneksi-ke-database-mysql">Koneksi ke Database MySQL</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-menggunakan-sklearn">Implementasi menggunakan Sklearn</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#deteksi-outlier-menggunakan-local-outlier-factor-lof-di-sklearn">Deteksi Outlier Menggunakan Local Outlier Factor (LOF) di Sklearn</a></li>
 </ul>
 
   </nav></div>
