@@ -408,7 +408,7 @@ Setiap titik data dihitung jaraknya ke sejumlah tetangga terdekatnya (misalnya 5
 Jarak yang dibutuhkan untuk mencapai tetangga terdekat dihitung untuk semua titik data.</p></li>
 <li><p>Hitung Kepadatan Lokal (Local Density)
 Kepadatan dihitung berdasarkan jarak ke tetangga sekitar.
-$<span class="math notranslate nohighlight">\(\text{LRD}(A) = \frac{1}{\frac{1}{k} \sum_{B \in N_k(A)} d_{\text{reach}}(A, B)} \)</span>$</p></li>
+<span class="math notranslate nohighlight">\(\text{LRD}(A) = \frac{1}{\frac{1}{k} \sum_{B \in N_k(A)} d_{\text{reach}}(A, B)} \)</span></p></li>
 <li><p>Hitung Local Outlier Factor (LOF Score)</p></li>
 </ol>
 <ul class="simple">
@@ -416,8 +416,7 @@ $<span class="math notranslate nohighlight">\(\text{LRD}(A) = \frac{1}{\frac{1}{
 <li><p>Jika LOF Score mendekati 1, titik tersebut dianggap normal.</p></li>
 <li><p>Jika LOF Score lebih besar dari 1, kemungkinan titik tersebut adalah outlier.</p></li>
 </ul>
-<div class="math notranslate nohighlight">
-\[\text{LOF}_k(A) = \frac{\sum_{B \in N_k(A)} \frac{\text{LRD}_k(B)}{\text{LRD}_k(A)}}{|N_k(A)|} \]</div>
+<p><span class="math notranslate nohighlight">\(\text{LOF}_k(A) = \frac{\sum_{B \in N_k(A)} \frac{\text{LRD}_k(B)}{\text{LRD}_k(A)}}{|N_k(A)|} \)</span></p>
 </section>
 <section id="contoh-menghitung-manual-lof">
 <h2>CONTOH MENGHITUNG MANUAL LOF<a class="headerlink" href="#contoh-menghitung-manual-lof" title="Link to this heading">#</a></h2>
@@ -654,7 +653,7 @@ LOF(D) ≈ 5.8, artinya titik D adalah outlier!</p>
   1 Iris-setosa           5.1          3.5    False
   2 Iris-setosa          40.9         30.0     True
   3 Iris-setosa           4.7          3.2    False
-  4 Iris-setosa           4.6          3.1    False
+  4 Iris-setosa          46.0         31.0     True
   5 Iris-setosa           5.0          3.6    False
   6 Iris-setosa           5.4          3.9    False
   7 Iris-setosa           4.6          3.4    False
@@ -667,7 +666,7 @@ LOF(D) ≈ 5.8, artinya titik D adalah outlier!</p>
   1 Iris-setosa           1.4          0.2    False
   2 Iris-setosa          14.0          2.0     True
   3 Iris-setosa           1.3          0.2    False
-  4 Iris-setosa           1.5          0.2    False
+  4 Iris-setosa          15.0         20.0     True
   5 Iris-setosa           1.4          0.2    False
   6 Iris-setosa           1.7          0.4    False
   7 Iris-setosa           1.4          0.3    False
@@ -676,8 +675,8 @@ LOF(D) ≈ 5.8, artinya titik D adalah outlier!</p>
  10 Iris-setosa           1.5          0.1    False
 </pre></div>
 </div>
-<img alt="_images/8d4681fdb11db64c71037a7542575d97e5af0a4f63545902588329b8e0ddeb52.png" src="_images/8d4681fdb11db64c71037a7542575d97e5af0a4f63545902588329b8e0ddeb52.png" />
-<img alt="_images/2bd841a2225a1bf9e623ef0800141d23cb360bb13b9cde07ecc7290d360c7365.png" src="_images/2bd841a2225a1bf9e623ef0800141d23cb360bb13b9cde07ecc7290d360c7365.png" />
+<img alt="_images/ee1f1920629a9d5c7b4b14cc1f71f67538dbcf0809d88f93aada4da04c00c564.png" src="_images/ee1f1920629a9d5c7b4b14cc1f71f67538dbcf0809d88f93aada4da04c00c564.png" />
+<img alt="_images/f16a03983eeb01218c6c85fe1210ba24832a29a4792d71e7d14cc55b6abac44f.png" src="_images/f16a03983eeb01218c6c85fe1210ba24832a29a4792d71e7d14cc55b6abac44f.png" />
 </div>
 </div>
 </section>
@@ -706,20 +705,20 @@ LOF(D) ≈ 5.8, artinya titik D adalah outlier!</p>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data Outlier (-1):
  id  petal_length  petal_width  sepal_length  sepal_width
   2          14.0          2.0          40.9         30.0
- 15           1.2          0.2           5.8          4.0
- 16           1.5          0.4           5.7          4.4
- 42           1.3          0.3           4.5          2.3
- 58           3.3          1.0           4.9          2.4
- 61           3.5          1.0           5.0          2.0
- 94           3.3          1.0           5.0          2.3
- 99           3.0          1.1           5.1          2.5
-106           6.6          2.1           7.6          3.0
-107           4.5          1.7           4.9          2.5
-118           6.7          2.2           7.7          3.8
-119           6.9          2.3           7.7          2.6
-123           6.7          2.0           7.7          2.8
-132           6.4          2.0           7.9          3.8
-151           5.1          3.2           5.8          1.0
+  4          15.0         20.0          46.0         31.0
+ 12          16.0         20.0          48.0         34.0
+ 21          17.0          2.0          54.0         34.0
+ 22          15.0          4.0          51.0         37.0
+ 59          46.0         13.0          66.0         29.0
+ 67          45.0         15.0           5.6          3.0
+ 68           4.1          1.0          56.0         30.0
+ 78          50.0         17.0          67.0         30.0
+ 94          33.0         10.0          50.0         23.0
+106          66.0         21.0          76.0         30.0
+110          61.0         25.0          72.0         36.0
+118          67.0         22.0          77.0         38.0
+127          48.0         18.0          62.0         28.0
+132          64.0         20.0          79.0         38.0
 </pre></div>
 </div>
 </div>
@@ -832,7 +831,7 @@ LOF(D) ≈ 5.8, artinya titik D adalah outlier!</p>
   1 Iris-setosa           5.1          3.5    False
   2 Iris-setosa          40.9         30.0     True
   3 Iris-setosa           4.7          3.2    False
-  4 Iris-setosa           4.6          3.1    False
+  4 Iris-setosa          46.0         31.0     True
   5 Iris-setosa           5.0          3.6    False
   6 Iris-setosa           5.4          3.9    False
   7 Iris-setosa           4.6          3.4    False
@@ -845,7 +844,7 @@ LOF(D) ≈ 5.8, artinya titik D adalah outlier!</p>
   1 Iris-setosa           1.4          0.2    False
   2 Iris-setosa          14.0          2.0     True
   3 Iris-setosa           1.3          0.2    False
-  4 Iris-setosa           1.5          0.2    False
+  4 Iris-setosa          15.0         20.0     True
   5 Iris-setosa           1.4          0.2    False
   6 Iris-setosa           1.7          0.4    False
   7 Iris-setosa           1.4          0.3    False
@@ -854,8 +853,8 @@ LOF(D) ≈ 5.8, artinya titik D adalah outlier!</p>
  10 Iris-setosa           1.5          0.1    False
 </pre></div>
 </div>
-<img alt="_images/8d4681fdb11db64c71037a7542575d97e5af0a4f63545902588329b8e0ddeb52.png" src="_images/8d4681fdb11db64c71037a7542575d97e5af0a4f63545902588329b8e0ddeb52.png" />
-<img alt="_images/2bd841a2225a1bf9e623ef0800141d23cb360bb13b9cde07ecc7290d360c7365.png" src="_images/2bd841a2225a1bf9e623ef0800141d23cb360bb13b9cde07ecc7290d360c7365.png" />
+<img alt="_images/ee1f1920629a9d5c7b4b14cc1f71f67538dbcf0809d88f93aada4da04c00c564.png" src="_images/ee1f1920629a9d5c7b4b14cc1f71f67538dbcf0809d88f93aada4da04c00c564.png" />
+<img alt="_images/f16a03983eeb01218c6c85fe1210ba24832a29a4792d71e7d14cc55b6abac44f.png" src="_images/f16a03983eeb01218c6c85fe1210ba24832a29a4792d71e7d14cc55b6abac44f.png" />
 </div>
 </div>
 </section>
