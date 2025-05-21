@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>K-MEANS CLUSTER 2,3 DAN 4 &#8212; 23-022 HERLY NABILA SAHQI PUTRI WANDANI</title>
+    <title>K-MEANS CLUSTER 2, 3 DAN 4 &#8212; 23-022 HERLY NABILA SAHQI PUTRI WANDANI</title>
   
   
   
@@ -176,7 +176,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="UTS.html">UTS</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">K-MEANS CLUSTER 2,3 DAN 4</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">K-MEANS CLUSTER 2, 3 DAN 4</a></li>
 </ul>
 
     </div>
@@ -359,7 +359,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>K-MEANS CLUSTER 2,3 DAN 4</h1>
+    <h1>K-MEANS CLUSTER 2, 3 DAN 4</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -369,7 +369,8 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bagian-awal-ambil-dan-gabungkan-data">Bagian Awal: Ambil dan Gabungkan Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-asli">Data asli</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-normalisasi">Data Normalisasi</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-dan-reduksi-dimensi">Preprocessing dan Reduksi Dimensi</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clustering-visualisasi-2-cluster">Clustering + Visualisasi (2 Cluster)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clustering-visualisasi-3-cluster">Clustering + Visualisasi (3 Cluster)</a></li>
@@ -386,7 +387,7 @@
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="k-means-cluster-2-3-dan-4">
-<h1>K-MEANS CLUSTER 2,3 DAN 4<a class="headerlink" href="#k-means-cluster-2-3-dan-4" title="Link to this heading">#</a></h1>
+<h1>K-MEANS CLUSTER 2, 3 DAN 4<a class="headerlink" href="#k-means-cluster-2-3-dan-4" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">pip</span> install pymysql
@@ -417,9 +418,45 @@
 </div>
 </div>
 </div>
-<section id="bagian-awal-ambil-dan-gabungkan-data">
-<h2>Bagian Awal: Ambil dan Gabungkan Data<a class="headerlink" href="#bagian-awal-ambil-dan-gabungkan-data" title="Link to this heading">#</a></h2>
-<p>Kode ini berhasil menggabungkan data sepal dari database PostgreSQL dan data petal dari database MySQL berdasarkan kolom yang sama (id dan class). Hasilnya adalah sebuah tabel lengkap yang menyatukan informasi sepal dan petal untuk setiap bunga yang memiliki id dan class yang cocok di kedua database. Ini memungkinkan analisis data yang lebih menyeluruh terhadap karakteristik bunga.</p>
+<p>Kode ini digunakan untuk mengambil data dari dua database berbeda (PostgreSQL dan MySQL), lalu menggabungkannya berdasarkan kolom id dan class, dan akhirnya mencetak hasilnya dalam bentuk tabel.</p>
+<ol class="arabic simple">
+<li><p>Library yang digunakan:</p></li>
+</ol>
+<ul class="simple">
+<li><p>psycopg2: koneksi ke PostgreSQL.</p></li>
+<li><p>pymysql: koneksi ke MySQL.</p></li>
+<li><p>pandas: untuk mengolah data tabular seperti tabel.</p></li>
+<li><p>numpy: diimpor tapi tidak dipakai.</p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p>Fungsi get_pg_data():</p></li>
+</ol>
+<ul class="simple">
+<li><p>Terkoneksi ke PostgreSQL.</p></li>
+<li><p>Mengambil semua data dari tabel sepaliris.</p></li>
+<li><p>Data dikonversi ke DataFrame agar mudah diolah.</p></li>
+</ul>
+<ol class="arabic simple" start="3">
+<li><p>Fungsi get_mysql_data():</p></li>
+</ol>
+<ul class="simple">
+<li><p>Terkoneksi ke MySQL.</p></li>
+<li><p>Mengambil semua data dari tabel petaliris.</p></li>
+<li><p>Juga dikonversi ke DataFrame.</p></li>
+</ul>
+<ol class="arabic simple" start="4">
+<li><p>Penggabungan data:</p></li>
+</ol>
+<ul class="simple">
+<li><p>Data dari kedua database digabung dengan pd.merge() berdasarkan kolom id dan class.</p></li>
+<li><p>Tipe join-nya inner, jadi hanya data yang cocok di kedua tabel yang diambil.</p></li>
+</ul>
+<ol class="arabic simple" start="5">
+<li><p>Output:</p></li>
+</ol>
+<ul class="simple">
+<li><p>Hasil penggabungan ditampilkan dalam bentuk tabel lengkap tanpa menampilkan nomor indeks.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">psycopg2</span>
@@ -629,25 +666,456 @@
 </div>
 </div>
 </div>
+<section id="data-asli">
+<h2>Data asli<a class="headerlink" href="#data-asli" title="Link to this heading">#</a></h2>
+<p>Proses dimulai dengan mengambil data numerik dari hasil penggabungan dua tabel, dengan membuang kolom non-numerik seperti <code class="docutils literal notranslate"><span class="pre">id</span></code> dan <code class="docutils literal notranslate"><span class="pre">class</span></code>. Data numerik tersebut kemudian diproses menggunakan PCA (Principal Component Analysis) tanpa melalui tahapan scaling, sehingga data tetap dalam skala aslinya.</p>
+<p>PCA dilakukan untuk mereduksi dimensi data menjadi dua dan tiga komponen utama. Hasil dari reduksi dua dimensi digunakan untuk membuat scatter plot 2D, sementara hasil tiga dimensi digunakan untuk visualisasi dalam bentuk plot 3D.</p>
+<p>Visualisasi ini memperlihatkan persebaran data berdasarkan komponen utama PCA yang mewakili variasi terbesar dari seluruh fitur. Karena data tidak diskalakan, fitur dengan rentang nilai lebih besar akan lebih memengaruhi arah komponen utama, sehingga distribusi dapat menjadi tidak seimbang. Oleh karena itu, pada banyak kasus, scaling diperlukan sebelum PCA untuk menyamakan kontribusi antar fitur.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Ambil fitur numerik mentah (tanpa scaling)</span>
+<span class="n">features_raw</span> <span class="o">=</span> <span class="n">df_merged</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;class&#39;</span><span class="p">])</span>
+
+<span class="c1"># PCA langsung pada data mentah</span>
+<span class="n">pca_raw</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">pca_2d_raw</span> <span class="o">=</span> <span class="n">pca_raw</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">features_raw</span><span class="p">)</span>
+
+<span class="c1"># Visualisasi</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">pca_2d_raw</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">pca_2d_raw</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;PCA 2D Sebelum Scaling&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;PCA 1&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;PCA 2&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">pca_raw_3d</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">pca_3d_raw</span> <span class="o">=</span> <span class="n">pca_raw_3d</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">features_raw</span><span class="p">)</span>
+
+<span class="c1"># Visualisasi 3D</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">pca_3d_raw</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">pca_3d_raw</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">pca_3d_raw</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span>
+           <span class="n">c</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;PCA 3D Sebelum Scaling&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;PCA 1&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;PCA 2&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s2">&quot;PCA 3&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/52342264149f308ac46966c26c94d48610914b100a365ef3946b3c17296e631b.png" src="_images/52342264149f308ac46966c26c94d48610914b100a365ef3946b3c17296e631b.png" />
+<img alt="_images/e7aeb5b965bf51c23bdeb5732344a693cf15f632e4617fc8cd0d7429ea664217.png" src="_images/e7aeb5b965bf51c23bdeb5732344a693cf15f632e4617fc8cd0d7429ea664217.png" />
+</div>
+</div>
+</section>
+<section id="data-normalisasi">
+<h2>Data Normalisasi<a class="headerlink" href="#data-normalisasi" title="Link to this heading">#</a></h2>
+<p>Langkah pertama adalah mengambil data numerik dari hasil penggabungan dua tabel, dengan menghapus kolom non-numerik seperti <code class="docutils literal notranslate"><span class="pre">id</span></code> dan <code class="docutils literal notranslate"><span class="pre">class</span></code>. Data numerik tersebut kemudian dinormalisasi menggunakan <strong>MinMaxScaler</strong>, yang mengubah nilai setiap fitur ke dalam rentang 0 sampai 1. Proses ini bertujuan untuk menyetarakan skala antar fitur agar tidak ada fitur yang mendominasi hasil PCA karena perbedaan satuan atau rentang nilai.</p>
+<p>Setelah normalisasi, data diproses dengan PCA (Principal Component Analysis) untuk mereduksi dimensi menjadi dua dan tiga komponen utama. Reduksi dua dimensi menghasilkan representasi data yang divisualisasikan dalam bentuk scatter plot 2D. Reduksi tiga dimensi divisualisasikan dalam bentuk scatter plot 3D.</p>
+<p>Visualisasi menunjukkan distribusi data berdasarkan komponen utama PCA yang telah dihitung dari data yang sudah dinormalisasi. Dengan normalisasi terlebih dahulu, seluruh fitur memiliki kontribusi yang seimbang terhadap hasil PCA, sehingga pola distribusi yang dihasilkan lebih representatif terhadap struktur data sebenarnya.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">MinMaxScaler</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>  <span class="c1"># untuk 3D plot</span>
+
+<span class="c1"># Ambil fitur numerik</span>
+<span class="n">features_raw</span> <span class="o">=</span> <span class="n">df_merged</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;class&#39;</span><span class="p">])</span>
+
+<span class="c1"># Normalisasi dengan MinMaxScaler</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span>
+<span class="n">normalized_features</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">features_raw</span><span class="p">)</span>
+
+<span class="c1"># PCA 2D setelah normalisasi</span>
+<span class="n">pca_2d</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">pca_2d_data</span> <span class="o">=</span> <span class="n">pca_2d</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">normalized_features</span><span class="p">)</span>
+
+<span class="c1"># Visualisasi PCA 2D</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">pca_2d_data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">pca_2d_data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;PCA 2D Setelah Normalisasi (MinMaxScaler)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;PCA 1&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;PCA 2&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># PCA 3D setelah normalisasi</span>
+<span class="n">pca_3d</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">pca_3d_data</span> <span class="o">=</span> <span class="n">pca_3d</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">normalized_features</span><span class="p">)</span>
+
+<span class="c1"># Visualisasi PCA 3D</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">pca_3d_data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">pca_3d_data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">pca_3d_data</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span>
+           <span class="n">c</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;PCA 3D Setelah Normalisasi (MinMaxScaler)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;PCA 1&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;PCA 2&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s2">&quot;PCA 3&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/42e23183ceb62082459709865b5a0205ad0d2a7204e7a91355c028dbf1ebc419.png" src="_images/42e23183ceb62082459709865b5a0205ad0d2a7204e7a91355c028dbf1ebc419.png" />
+<img alt="_images/b9b9d60b68a606b268ba22c28bd70f6ba4636b17d6dd1fdfdcd54fc65e8f0a3a.png" src="_images/b9b9d60b68a606b268ba22c28bd70f6ba4636b17d6dd1fdfdcd54fc65e8f0a3a.png" />
+</div>
+</div>
 </section>
 <section id="preprocessing-dan-reduksi-dimensi">
 <h2>Preprocessing dan Reduksi Dimensi<a class="headerlink" href="#preprocessing-dan-reduksi-dimensi" title="Link to this heading">#</a></h2>
-<p>Kode tersebut melakukan normalisasi data numerik dan reduksi dimensi menjadi 2 komponen utama menggunakan PCA, agar data lebih mudah divisualisasikan atau dianalisis.</p>
+<p>Data numerik diperoleh dengan menghapus kolom non-numerik seperti <code class="docutils literal notranslate"><span class="pre">id</span></code> dan <code class="docutils literal notranslate"><span class="pre">class</span></code> dari hasil gabungan. Selanjutnya, dilakukan dua jenis normalisasi untuk keperluan perbandingan hasil reduksi dimensi menggunakan PCA (Principal Component Analysis).</p>
+<ol class="arabic simple">
+<li><p>StandardScaler
+Data dinormalisasi menggunakan StandardScaler yang mengubah nilai setiap fitur agar memiliki rata-rata 0 dan standar deviasi 1. Hasil normalisasi ini kemudian direduksi menjadi dua dimensi menggunakan PCA.</p></li>
+<li><p>MinMaxScaler
+Data juga dinormalisasi menggunakan MinMaxScaler yang mengubah nilai setiap fitur ke rentang 0 hingga 1. Setelah normalisasi, PCA kembali digunakan untuk mereduksi dimensi menjadi dua komponen utama.</p></li>
+</ol>
+<p>Hasil dari kedua pendekatan tersebut berupa dua set representasi data berdimensi dua, yang dapat digunakan untuk analisis lebih lanjut atau divisualisasikan guna membandingkan efek dari metode normalisasi terhadap distribusi data hasil PCA.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span><span class="p">,</span> <span class="n">MinMaxScaler</span>
 <span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
 
 <span class="c1"># Drop kolom non-numerik</span>
 <span class="n">features</span> <span class="o">=</span> <span class="n">df_merged</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;class&#39;</span><span class="p">])</span>
 
-<span class="c1"># Normalisasi</span>
-<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
-<span class="n">scaled_features</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+<span class="c1"># StandardScaler</span>
+<span class="n">standard_scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">standard_scaled</span> <span class="o">=</span> <span class="n">standard_scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+<span class="n">standard_pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">standard_reduced</span> <span class="o">=</span> <span class="n">standard_pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">standard_scaled</span><span class="p">)</span>
 
-<span class="c1"># Reduksi dimensi untuk visualisasi</span>
-<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">reduced_features</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">scaled_features</span><span class="p">)</span>
+<span class="c1"># MinMaxScaler</span>
+<span class="n">minmax_scaler</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span>
+<span class="n">minmax_scaled</span> <span class="o">=</span> <span class="n">minmax_scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+<span class="n">minmax_pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">minmax_reduced</span> <span class="o">=</span> <span class="n">minmax_pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">minmax_scaled</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">standard_scaled</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-----------------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">minmax_scaled</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-0.47336355 -0.4992233  -0.36768452 -0.27454238]
+ [ 0.5357241  -0.11465756  1.78761061  2.8056325 ]
+ [-0.48137218 -0.4992233  -0.39176603 -0.30941228]
+ [ 0.61581042  3.73099981  2.09464986  2.92186551]
+ [-0.47336355 -0.4992233  -0.3737049  -0.26291908]
+ [-0.44933765 -0.45649377 -0.34962339 -0.22804917]
+ [-0.47336355 -0.47785854 -0.39778641 -0.28616568]
+ [-0.46535492 -0.4992233  -0.3737049  -0.28616568]
+ [-0.47336355 -0.4992233  -0.40982716 -0.34428219]
+ [-0.46535492 -0.52058806 -0.37972527 -0.32103559]
+ [-0.46535492 -0.4992233  -0.34962339 -0.25129578]
+ [ 0.69589674  3.73099981  2.2150574   3.27056455]
+ [-0.47336355 -0.52058806 -0.38574565 -0.33265889]
+ [-0.49738945 -0.52058806 -0.41584754 -0.33265889]
+ [-0.48938081 -0.4992233  -0.32554188 -0.21642587]
+ [-0.46535492 -0.45649377 -0.33156225 -0.16993267]
+ [-0.48137218 -0.45649377 -0.34962339 -0.22804917]
+ [-0.47336355 -0.47785854 -0.36768452 -0.27454238]
+ [-0.44933765 -0.47785854 -0.33156225 -0.23967248]
+ [-0.46535492 -0.47785854 -0.36768452 -0.23967248]
+ [ 0.77598306 -0.11465756  2.57628005  3.27056455]
+ [ 0.61581042  0.3126377   2.39566873  3.6192636 ]
+ [-0.50539808 -0.4992233  -0.39778641 -0.26291908]
+ [-0.44933765 -0.43512901 -0.36768452 -0.29778898]
+ [-0.43332039 -0.4992233  -0.38574565 -0.28616568]
+ [-0.45734628 -0.4992233  -0.3737049  -0.33265889]
+ [-0.45734628 -0.45649377 -0.3737049  -0.28616568]
+ [-0.46535492 -0.4992233  -0.36166414 -0.27454238]
+ [-0.47336355 -0.4992233  -0.36166414 -0.28616568]
+ [-0.45734628 -0.4992233  -0.39176603 -0.30941228]
+ [-0.45734628 -0.4992233  -0.38574565 -0.32103559]
+ [-0.46535492 -0.45649377 -0.34962339 -0.28616568]
+ [-0.46535492 -0.52058806 -0.36166414 -0.20480257]
+ [-0.47336355 -0.4992233  -0.34360301 -0.19317927]
+ [-0.46535492 -0.52058806 -0.37972527 -0.32103559]
+ [-0.48938081 -0.4992233  -0.3737049  -0.30941228]
+ [-0.48137218 -0.4992233  -0.34360301 -0.27454238]
+ [-0.46535492 -0.52058806 -0.37972527 -0.32103559]
+ [-0.48137218 -0.4992233  -0.40982716 -0.33265889]
+ [-0.46535492 -0.4992233  -0.36768452 -0.28616568]
+ [-0.48137218 -0.47785854 -0.3737049  -0.27454238]
+ [-0.48137218 -0.47785854 -0.40380678 -0.414022  ]
+ [-0.48137218 -0.4992233  -0.40982716 -0.30941228]
+ [-0.45734628 -0.41376425 -0.3737049  -0.27454238]
+ [-0.43332039 -0.45649377 -0.36768452 -0.23967248]
+ [-0.47336355 -0.47785854 -0.38574565 -0.33265889]
+ [-0.45734628 -0.4992233  -0.36768452 -0.23967248]
+ [-0.47336355 -0.4992233  -0.39778641 -0.30941228]
+ [-0.46535492 -0.4992233  -0.35564376 -0.25129578]
+ [-0.47336355 -0.4992233  -0.3737049  -0.29778898]
+ [-0.20907869 -0.24284614 -0.25329735 -0.30941228]
+ [-0.22509595 -0.22148138 -0.28941961 -0.30941228]
+ [-0.19306142 -0.22148138 -0.25931772 -0.32103559]
+ [-0.26513911 -0.2642109  -0.34360301 -0.414022  ]
+ [-0.21708732 -0.22148138 -0.28339923 -0.35590549]
+ [-0.22509595 -0.2642109  -0.33156225 -0.35590549]
+ [-0.20907869 -0.20011662 -0.29543999 -0.29778898]
+ [-0.32119954 -0.32830519 -0.37972527 -0.4023987 ]
+ [ 3.09848638  2.23546639  3.29872534  2.68939948]
+ [-0.27314775 -0.24284614 -0.36166414 -0.36752879]
+ [ 2.21753684  1.59452349  2.33546495  1.64330235]
+ [-0.24912185 -0.22148138 -0.3195215  -0.33265889]
+ [-0.26513911 -0.32830519 -0.31350112 -0.4256453 ]
+ [-0.20907869 -0.24284614 -0.30748074 -0.34428219]
+ [-0.29717364 -0.2642109  -0.33758263 -0.34428219]
+ [-0.23310459 -0.24284614 -0.27135848 -0.32103559]
+ [ 3.01840005  2.66276165  2.6966876   2.8056325 ]
+ [-0.25713048 -0.32830519 -0.32554188 -0.36752879]
+ [-0.22509595 -0.22148138 -0.30146037 -0.4256453 ]
+ [-0.27314775 -0.30694043 -0.33758263 -0.39077539]
+ [-0.20107006 -0.15738709 -0.3195215  -0.30941228]
+ [-0.26513911 -0.2642109  -0.30748074 -0.35590549]
+ [-0.19306142 -0.22148138 -0.29543999 -0.39077539]
+ [-0.20907869 -0.28557567 -0.30748074 -0.35590549]
+ [-0.24111322 -0.2642109  -0.28941961 -0.34428219]
+ [-0.23310459 -0.24284614 -0.27737886 -0.33265889]
+ [-0.20107006 -0.24284614 -0.2653381  -0.35590549]
+ [ 3.41883166  3.09005691  3.35892912  2.8056325 ]
+ [-0.22509595 -0.22148138 -0.31350112 -0.34428219]
+ [-0.30518227 -0.32830519 -0.33156225 -0.37915209]
+ [-0.28115638 -0.30694043 -0.34360301 -0.4023987 ]
+ [-0.28916501 -0.32830519 -0.34360301 -0.4023987 ]
+ [-0.27314775 -0.28557567 -0.32554188 -0.36752879]
+ [-0.17704416 -0.20011662 -0.31350112 -0.36752879]
+ [-0.22509595 -0.22148138 -0.34962339 -0.33265889]
+ [-0.22509595 -0.20011662 -0.31350112 -0.28616568]
+ [-0.20907869 -0.22148138 -0.27135848 -0.32103559]
+ [-0.23310459 -0.2642109  -0.29543999 -0.414022  ]
+ [-0.25713048 -0.2642109  -0.33758263 -0.33265889]
+ [-0.26513911 -0.2642109  -0.34360301 -0.39077539]
+ [-0.23310459 -0.28557567 -0.34360301 -0.37915209]
+ [-0.21708732 -0.24284614 -0.30748074 -0.33265889]
+ [-0.26513911 -0.28557567 -0.32554188 -0.37915209]
+ [ 2.0573642   1.59452349  2.33546495  1.9920014 ]
+ [-0.24912185 -0.2642109  -0.33758263 -0.36752879]
+ [-0.24912185 -0.28557567 -0.33156225 -0.33265889]
+ [-0.24912185 -0.2642109  -0.33156225 -0.34428219]
+ [-0.24111322 -0.2642109  -0.30146037 -0.34428219]
+ [-0.34522544 -0.30694043 -0.36768452 -0.39077539]
+ [-0.25713048 -0.2642109  -0.33156225 -0.35590549]
+ [-0.10496647 -0.00783375 -0.29543999 -0.29778898]
+ [-0.17704416 -0.13602233 -0.32554188 -0.36752879]
+ [-0.1129751  -0.0932928  -0.24727697 -0.33265889]
+ [-0.137001   -0.15738709 -0.29543999 -0.34428219]
+ [-0.12098374 -0.07192804 -0.28339923 -0.33265889]
+ [ 4.7002128   3.94464744  3.90076309  2.8056325 ]
+ [-0.22509595 -0.17875185 -0.37972527 -0.39077539]
+ [-0.08094058 -0.15738709 -0.23523621 -0.34428219]
+ [-0.12098374 -0.15738709 -0.27135848 -0.39077539]
+ [ 4.29978119  4.79923797  3.65994799  3.50303058]
+ [-0.17704416 -0.11465756 -0.28339923 -0.30941228]
+ [-0.1610269  -0.13602233 -0.28941961 -0.36752879]
+ [-0.14500963 -0.0932928  -0.2653381  -0.33265889]
+ [-0.18505279 -0.11465756 -0.33156225 -0.39077539]
+ [-0.17704416 -0.02919851 -0.32554188 -0.35590549]
+ [-0.1610269  -0.05056327 -0.28941961 -0.30941228]
+ [-0.14500963 -0.15738709 -0.28339923 -0.33265889]
+ [ 4.78029912  4.15829507  3.96096686  3.73549661]
+ [-0.03288878 -0.05056327 -0.2111547  -0.37915209]
+ [-0.18505279 -0.22148138 -0.31350112 -0.4256453 ]
+ [-0.12899237 -0.05056327 -0.25931772 -0.30941228]
+ [-0.19306142 -0.11465756 -0.33758263 -0.35590549]
+ [-0.04890605 -0.11465756 -0.2111547  -0.35590549]
+ [-0.19306142 -0.15738709 -0.29543999 -0.36752879]
+ [-0.12899237 -0.0932928  -0.27135848 -0.29778898]
+ [-0.10496647 -0.15738709 -0.24125659 -0.30941228]
+ [ 3.25865902  3.30370455  3.05791025  2.57316647]
+ [-0.19306142 -0.15738709 -0.30748074 -0.33265889]
+ [-0.137001   -0.0932928  -0.28941961 -0.35590549]
+ [-0.12098374 -0.20011662 -0.24125659 -0.33265889]
+ [-0.09695784 -0.13602233 -0.22921584 -0.35590549]
+ [ 4.54004016  3.73099981  4.08137441  3.73549661]
+ [-0.137001   -0.07192804 -0.28941961 -0.35590549]
+ [-0.17704416 -0.22148138 -0.29543999 -0.35590549]
+ [-0.137001   -0.24284614 -0.30748074 -0.37915209]
+ [-0.09695784 -0.05056327 -0.2111547  -0.33265889]
+ [-0.137001   -0.02919851 -0.29543999 -0.28616568]
+ [-0.14500963 -0.15738709 -0.28941961 -0.32103559]
+ [-0.20107006 -0.15738709 -0.31350112 -0.33265889]
+ [-0.15301826 -0.0932928  -0.25931772 -0.32103559]
+ [-0.137001   -0.02919851 -0.27135848 -0.32103559]
+ [-0.17704416 -0.05056327 -0.25931772 -0.32103559]
+ [-0.17704416 -0.13602233 -0.32554188 -0.36752879]
+ [-0.1129751  -0.05056327 -0.2653381  -0.30941228]
+ [-0.12899237 -0.00783375 -0.27135848 -0.29778898]
+ [-0.16903553 -0.05056327 -0.27135848 -0.33265889]
+ [-0.18505279 -0.13602233 -0.29543999 -0.39077539]
+ [-0.16903553 -0.11465756 -0.28339923 -0.33265889]
+ [-0.15301826 -0.05056327 -0.30146037 -0.28616568]
+ [-0.17704416 -0.15738709 -0.3195215  -0.33265889]]
+-----------------
+[[0.00606061 0.00401606 0.0107095  0.03631285]
+ [0.1969697  0.07630522 0.48995984 0.77653631]
+ [0.00454545 0.00401606 0.00535475 0.02793296]
+ [0.21212121 0.79919679 0.55823293 0.80446927]
+ [0.00606061 0.00401606 0.00937082 0.03910615]
+ [0.01060606 0.01204819 0.01472557 0.04748603]
+ [0.00606061 0.00803213 0.00401606 0.03351955]
+ [0.00757576 0.00401606 0.00937082 0.03351955]
+ [0.00606061 0.00401606 0.00133869 0.01955307]
+ [0.00757576 0.         0.00803213 0.02513966]
+ [0.00757576 0.00401606 0.01472557 0.04189944]
+ [0.22727273 0.79919679 0.58500669 0.88826816]
+ [0.00606061 0.         0.00669344 0.02234637]
+ [0.00151515 0.         0.         0.02234637]
+ [0.0030303  0.00401606 0.02008032 0.05027933]
+ [0.00757576 0.01204819 0.01874163 0.06145251]
+ [0.00454545 0.01204819 0.01472557 0.04748603]
+ [0.00606061 0.00803213 0.0107095  0.03631285]
+ [0.01060606 0.00803213 0.01874163 0.04469274]
+ [0.00757576 0.00803213 0.0107095  0.04469274]
+ [0.24242424 0.07630522 0.66532798 0.88826816]
+ [0.21212121 0.15662651 0.62516734 0.97206704]
+ [0.         0.00401606 0.00401606 0.03910615]
+ [0.01060606 0.01606426 0.0107095  0.03072626]
+ [0.01363636 0.00401606 0.00669344 0.03351955]
+ [0.00909091 0.00401606 0.00937082 0.02234637]
+ [0.00909091 0.01204819 0.00937082 0.03351955]
+ [0.00757576 0.00401606 0.01204819 0.03631285]
+ [0.00606061 0.00401606 0.01204819 0.03351955]
+ [0.00909091 0.00401606 0.00535475 0.02793296]
+ [0.00909091 0.00401606 0.00669344 0.02513966]
+ [0.00757576 0.01204819 0.01472557 0.03351955]
+ [0.00757576 0.         0.01204819 0.05307263]
+ [0.00606061 0.00401606 0.01606426 0.05586592]
+ [0.00757576 0.         0.00803213 0.02513966]
+ [0.0030303  0.00401606 0.00937082 0.02793296]
+ [0.00454545 0.00401606 0.01606426 0.03631285]
+ [0.00757576 0.         0.00803213 0.02513966]
+ [0.00454545 0.00401606 0.00133869 0.02234637]
+ [0.00757576 0.00401606 0.0107095  0.03351955]
+ [0.00454545 0.00803213 0.00937082 0.03631285]
+ [0.00454545 0.00803213 0.00267738 0.0027933 ]
+ [0.00454545 0.00401606 0.00133869 0.02793296]
+ [0.00909091 0.02008032 0.00937082 0.03631285]
+ [0.01363636 0.01204819 0.0107095  0.04469274]
+ [0.00606061 0.00803213 0.00669344 0.02234637]
+ [0.00909091 0.00401606 0.0107095  0.04469274]
+ [0.00606061 0.00401606 0.00401606 0.02793296]
+ [0.00757576 0.00401606 0.01338688 0.04189944]
+ [0.00606061 0.00401606 0.00937082 0.03072626]
+ [0.05606061 0.05220884 0.03614458 0.02793296]
+ [0.0530303  0.0562249  0.02811245 0.02793296]
+ [0.05909091 0.0562249  0.03480589 0.02513966]
+ [0.04545455 0.04819277 0.01606426 0.0027933 ]
+ [0.05454545 0.0562249  0.02945114 0.01675978]
+ [0.0530303  0.04819277 0.01874163 0.01675978]
+ [0.05606061 0.06024096 0.02677376 0.03072626]
+ [0.03484848 0.03614458 0.00803213 0.00558659]
+ [0.68181818 0.51807229 0.82597055 0.74860335]
+ [0.04393939 0.05220884 0.01204819 0.01396648]
+ [0.51515152 0.39759036 0.61178046 0.4972067 ]
+ [0.04848485 0.0562249  0.02141901 0.02234637]
+ [0.04545455 0.03614458 0.0227577  0.        ]
+ [0.05606061 0.05220884 0.02409639 0.01955307]
+ [0.03939394 0.04819277 0.01740295 0.01955307]
+ [0.05151515 0.05220884 0.03212851 0.02513966]
+ [0.66666667 0.59839357 0.69210174 0.77653631]
+ [0.0469697  0.03614458 0.02008032 0.01396648]
+ [0.0530303  0.0562249  0.02543507 0.        ]
+ [0.04393939 0.04016064 0.01740295 0.00837989]
+ [0.05757576 0.06827309 0.02141901 0.02793296]
+ [0.04545455 0.04819277 0.02409639 0.01675978]
+ [0.05909091 0.0562249  0.02677376 0.00837989]
+ [0.05606061 0.04417671 0.02409639 0.01675978]
+ [0.05       0.04819277 0.02811245 0.01955307]
+ [0.05151515 0.05220884 0.03078983 0.02234637]
+ [0.05757576 0.05220884 0.0334672  0.01675978]
+ [0.74242424 0.67871486 0.83935743 0.77653631]
+ [0.0530303  0.0562249  0.0227577  0.01955307]
+ [0.03787879 0.03614458 0.01874163 0.01117318]
+ [0.04242424 0.04016064 0.01606426 0.00558659]
+ [0.04090909 0.03614458 0.01606426 0.00558659]
+ [0.04393939 0.04417671 0.02008032 0.01396648]
+ [0.06212121 0.06024096 0.0227577  0.01396648]
+ [0.0530303  0.0562249  0.01472557 0.02234637]
+ [0.0530303  0.06024096 0.0227577  0.03351955]
+ [0.05606061 0.0562249  0.03212851 0.02513966]
+ [0.05151515 0.04819277 0.02677376 0.0027933 ]
+ [0.0469697  0.04819277 0.01740295 0.02234637]
+ [0.04545455 0.04819277 0.01606426 0.00837989]
+ [0.05151515 0.04417671 0.01606426 0.01117318]
+ [0.05454545 0.05220884 0.02409639 0.02234637]
+ [0.04545455 0.04417671 0.02008032 0.01117318]
+ [0.48484848 0.39759036 0.61178046 0.58100559]
+ [0.04848485 0.04819277 0.01740295 0.01396648]
+ [0.04848485 0.04417671 0.01874163 0.02234637]
+ [0.04848485 0.04819277 0.01874163 0.01955307]
+ [0.05       0.04819277 0.02543507 0.01955307]
+ [0.03030303 0.04016064 0.0107095  0.00837989]
+ [0.0469697  0.04819277 0.01874163 0.01675978]
+ [0.07575758 0.09638554 0.02677376 0.03072626]
+ [0.06212121 0.07228916 0.02008032 0.01396648]
+ [0.07424242 0.08032129 0.03748327 0.02234637]
+ [0.06969697 0.06827309 0.02677376 0.01955307]
+ [0.07272727 0.08433735 0.02945114 0.02234637]
+ [0.98484848 0.83935743 0.95983936 0.77653631]
+ [0.0530303  0.06425703 0.00803213 0.00837989]
+ [0.08030303 0.06827309 0.04016064 0.01955307]
+ [0.07272727 0.06827309 0.03212851 0.00837989]
+ [0.90909091 1.         0.90629183 0.94413408]
+ [0.06212121 0.07630522 0.02945114 0.02793296]
+ [0.06515152 0.07228916 0.02811245 0.01396648]
+ [0.06818182 0.08032129 0.0334672  0.02234637]
+ [0.06060606 0.07630522 0.01874163 0.00837989]
+ [0.06212121 0.09236948 0.02008032 0.01675978]
+ [0.06515152 0.08835341 0.02811245 0.02793296]
+ [0.06818182 0.06827309 0.02945114 0.02234637]
+ [1.         0.87951807 0.97322624 1.        ]
+ [0.08939394 0.08835341 0.04551539 0.01117318]
+ [0.06060606 0.0562249  0.0227577  0.        ]
+ [0.07121212 0.08835341 0.03480589 0.02793296]
+ [0.05909091 0.07630522 0.01740295 0.01675978]
+ [0.08636364 0.07630522 0.04551539 0.01675978]
+ [0.05909091 0.06827309 0.02677376 0.01396648]
+ [0.07121212 0.08032129 0.03212851 0.03072626]
+ [0.07575758 0.06827309 0.03882195 0.02793296]
+ [0.71212121 0.7188755  0.77242303 0.72067039]
+ [0.05909091 0.06827309 0.02409639 0.02234637]
+ [0.06969697 0.08032129 0.02811245 0.01675978]
+ [0.07272727 0.06024096 0.03882195 0.02234637]
+ [0.07727273 0.07228916 0.04149933 0.01675978]
+ [0.95454545 0.79919679 1.         1.        ]
+ [0.06969697 0.08433735 0.02811245 0.01675978]
+ [0.06212121 0.0562249  0.02677376 0.01675978]
+ [0.06969697 0.05220884 0.02409639 0.01117318]
+ [0.07727273 0.08835341 0.04551539 0.02234637]
+ [0.06969697 0.09236948 0.02677376 0.03351955]
+ [0.06818182 0.06827309 0.02811245 0.02513966]
+ [0.05757576 0.06827309 0.0227577  0.02234637]
+ [0.06666667 0.08032129 0.03480589 0.02513966]
+ [0.06969697 0.09236948 0.03212851 0.02513966]
+ [0.06212121 0.08835341 0.03480589 0.02513966]
+ [0.06212121 0.07228916 0.02008032 0.01396648]
+ [0.07424242 0.08835341 0.0334672  0.02793296]
+ [0.07121212 0.09638554 0.03212851 0.03072626]
+ [0.06363636 0.08835341 0.03212851 0.02234637]
+ [0.06060606 0.07228916 0.02677376 0.00837989]
+ [0.06363636 0.07630522 0.02945114 0.02234637]
+ [0.06666667 0.08835341 0.02543507 0.03351955]
+ [0.06212121 0.06827309 0.02141901 0.02234637]]
 </pre></div>
 </div>
 </div>
@@ -655,134 +1123,224 @@
 </section>
 <section id="clustering-visualisasi-2-cluster">
 <h2>Clustering + Visualisasi (2 Cluster)<a class="headerlink" href="#clustering-visualisasi-2-cluster" title="Link to this heading">#</a></h2>
+<p>Data yang telah dinormalisasi dengan MinMaxScaler direduksi ke dalam tiga dimensi menggunakan PCA (Principal Component Analysis). Hasil reduksi ini digunakan sebagai input untuk algoritma KMeans clustering dengan jumlah cluster sebanyak 2.</p>
+<p>Setelah proses klasterisasi, dua metrik evaluasi dihitung:</p>
 <ul class="simple">
-<li><p>Menggunakan K-Means Clustering untuk mengelompokkan data ke dalam 2 cluster.</p></li>
-<li><p>Evaluasi hasil clustering dilakukan dengan Inertia (mengukur kepadatan cluster) dan Silhouette Score (menilai seberapa baik pemisahan cluster).</p></li>
-<li><p>Menampilkan hasil clustering dengan scatter plot, sehingga kita bisa melihat bagaimana data dikelompokkan berdasarkan dua komponen utama (hasil PCA atau teknik reduksi dimensi lainnya).</p></li>
+<li><p>Inertia: total jarak kuadrat antar titik dan pusat cluster masing-masing. Nilai lebih kecil menunjukkan cluster yang lebih rapat.</p></li>
+<li><p>Silhouette Score: mengukur seberapa baik setiap titik cocok dengan clusternya dibandingkan dengan cluster lain. Nilai berkisar antara -1 hingga 1; nilai mendekati 1 menunjukkan pemisahan cluster yang baik.</p></li>
+</ul>
+<p>Visualisasi hasil klasterisasi ditampilkan dalam bentuk scatter plot 3D berdasarkan hasil PCA. Warna tiap titik ditentukan oleh label cluster dari KMeans, dan ukuran titik diperbesar untuk kejelasan. Visualisasi ini memberikan gambaran distribusi data dalam ruang tiga dimensi serta pemisahan antar dua cluster yang terbentuk.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">silhouette_score</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>  <span class="c1"># Required for 3D plotting</span>
+
+<span class="c1"># PCA 3D</span>
+<span class="n">pca_3d</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">minmax_reduced_3d</span> <span class="o">=</span> <span class="n">pca_3d</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">minmax_scaled</span><span class="p">)</span>
+
+<span class="c1"># KMeans dengan 2 cluster</span>
+<span class="n">kmeans_2</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">labels_2</span> <span class="o">=</span> <span class="n">kmeans_2</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">minmax_reduced_3d</span><span class="p">)</span>
+
+<span class="c1"># Evaluasi</span>
+<span class="n">inertia_2</span> <span class="o">=</span> <span class="n">kmeans_2</span><span class="o">.</span><span class="n">inertia_</span>
+<span class="n">silhouette_2</span> <span class="o">=</span> <span class="n">silhouette_score</span><span class="p">(</span><span class="n">minmax_scaled</span><span class="p">,</span> <span class="n">labels_2</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[2 Clusters] Inertia: </span><span class="si">{</span><span class="n">inertia_2</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, Silhouette Score: </span><span class="si">{</span><span class="n">silhouette_2</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Visualisasi 3D (ukuran diperbesar)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>  <span class="c1"># Lebar dan tinggi ditingkatkan</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+<span class="n">sc</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">minmax_reduced_3d</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">minmax_reduced_3d</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">minmax_reduced_3d</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span>
+                <span class="n">c</span><span class="o">=</span><span class="n">labels_2</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;KMeans Clustering (2 Clusters - 3D PCA)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;PCA 1&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;PCA 2&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s2">&quot;PCA 3&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2 Clusters] Inertia: 3.49, Silhouette Score: 0.9173
+</pre></div>
+</div>
+<img alt="_images/eb18b16c931edc99eb12f13eae758f201f2c0f142b0bcbba7163ee9d84f3e87b.png" src="_images/eb18b16c931edc99eb12f13eae758f201f2c0f142b0bcbba7163ee9d84f3e87b.png" />
+</div>
+</div>
+</section>
+<section id="clustering-visualisasi-3-cluster">
+<h2>Clustering + Visualisasi (3 Cluster)<a class="headerlink" href="#clustering-visualisasi-3-cluster" title="Link to this heading">#</a></h2>
+<p>Data yang telah dinormalisasi dengan MinMaxScaler direduksi menggunakan PCA menjadi dua dan tiga dimensi. Hasil reduksi dua dimensi digunakan untuk visualisasi 2D, sedangkan hasil reduksi tiga dimensi digunakan untuk visualisasi 3D.</p>
+<p>Kemudian, dilakukan KMeans clustering dengan jumlah cluster sebanyak 3 pada data yang telah dinormalisasi (bukan data hasil PCA). Model KMeans menghasilkan label cluster untuk setiap data, yang digunakan dalam proses visualisasi.</p>
+<p>Dua metrik evaluasi digunakan untuk menilai hasil clustering:</p>
+<ul class="simple">
+<li><p>Inertia: total jarak kuadrat antara setiap data dan pusat cluster-nya. Nilai lebih kecil menunjukkan cluster yang lebih kompak.</p></li>
+<li><p>ilhouette Score: mengukur sejauh mana setiap titik cocok dengan cluster-nya sendiri dibandingkan dengan cluster lain. Nilai berkisar dari -1 hingga 1; semakin tinggi, semakin baik pemisahannya.</p></li>
+</ul>
+<p>Visualisasi pertama menampilkan hasil clustering dalam plot 2D menggunakan hasil PCA 2 komponen. Warna pada scatter plot menunjukkan label cluster hasil KMeans.</p>
+<p>Visualisasi kedua menampilkan hasil clustering dalam plot 3D menggunakan hasil PCA 3 komponen. Plot ini memperlihatkan distribusi data dan bentuk pemisahan antar cluster dalam ruang tiga dimensi.</p>
+<p>Tujuan dari proses ini adalah untuk melihat struktur dan pemisahan alami pada data dalam jumlah cluster yang lebih dari dua, serta membandingkan visualisasi hasil clustering dalam dua dan tiga dimensi.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">silhouette_score</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>  <span class="c1"># Untuk plotting 3D</span>
+
+<span class="c1"># PCA 2D (jika belum dilakukan sebelumnya)</span>
+<span class="n">pca_2d</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">minmax_reduced_2d</span> <span class="o">=</span> <span class="n">pca_2d</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">minmax_scaled</span><span class="p">)</span>
+
+<span class="c1"># PCA 3D</span>
+<span class="n">pca_3d</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">minmax_reduced_3d</span> <span class="o">=</span> <span class="n">pca_3d</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">minmax_scaled</span><span class="p">)</span>
+
+<span class="c1"># KMeans dengan 3 cluster</span>
+<span class="n">kmeans_3</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">labels_3</span> <span class="o">=</span> <span class="n">kmeans_3</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">minmax_scaled</span><span class="p">)</span>
+
+<span class="c1"># Evaluasi</span>
+<span class="n">inertia_3</span> <span class="o">=</span> <span class="n">kmeans_3</span><span class="o">.</span><span class="n">inertia_</span>
+<span class="n">silhouette_3</span> <span class="o">=</span> <span class="n">silhouette_score</span><span class="p">(</span><span class="n">minmax_scaled</span><span class="p">,</span> <span class="n">labels_3</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[3 Clusters] Inertia: </span><span class="si">{</span><span class="n">inertia_3</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, Silhouette Score: </span><span class="si">{</span><span class="n">silhouette_3</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Visualisasi 2D</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">minmax_reduced_2d</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">minmax_reduced_2d</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">labels_3</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;KMeans Clustering (3 Clusters - 2D PCA)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;PCA 1&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;PCA 2&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Visualisasi 3D</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+<span class="n">sc</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">minmax_reduced_3d</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">minmax_reduced_3d</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">minmax_reduced_3d</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span>
+                <span class="n">c</span><span class="o">=</span><span class="n">labels_3</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;KMeans Clustering (3 Clusters - 3D PCA)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;PCA 1&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;PCA 2&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s2">&quot;PCA 3&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3 Clusters] Inertia: 1.65, Silhouette Score: 0.9015
+</pre></div>
+</div>
+<img alt="_images/b730a6415c2a553fe8af3726aaccf2798292078ed8e9dd55da2dc9f84e71434a.png" src="_images/b730a6415c2a553fe8af3726aaccf2798292078ed8e9dd55da2dc9f84e71434a.png" />
+<img alt="_images/556f07fc005c2e8e903311d8c1eecf42f4680f2b49f59698a160b93e0f8de3ec.png" src="_images/556f07fc005c2e8e903311d8c1eecf42f4680f2b49f59698a160b93e0f8de3ec.png" />
+</div>
+</div>
+</section>
+<section id="clustering-visualisasi-4-cluster">
+<h2>Clustering + Visualisasi (4 Cluster)<a class="headerlink" href="#clustering-visualisasi-4-cluster" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Reduksi Dimensi dengan P</p></li>
+</ol>
+<p>Reduksi dimensi dilakukan untuk menyederhanakan representasi data tanpa kehilangan terlalu banyak informasi. Dalam konteks ini, dua jenis reduksi digunakan:</p>
+<p>Reduksi ke 2 Dimensi (2D
+Data yang telah dinormalisasi (dalam bentuk min-max scaled) dikurangi dimensinya menjadi dua komponen utama menggunakan teknik Principal Component Analysis (PCA). Ini memungkinkan visualisasi data dalam bidang dua dimensi.</p>
+<p>Reduksi ke 3 Dimensi (3D
+Data yang sama juga direduksi menjadi tiga dimensi, sehingga dapat divisualisasikan dalam ruang tiga dimensi. Ini berguna untuk menangkap lebih banyak variasi data jika dua dimensi dianggap kurang mewakili.</p>
+<ol class="arabic simple" start="2">
+<li><p>Penerapan KMeans Clusteri</p></li>
+</ol>
+<p>Proses pengelompokan dilakukan menggunakan algoritma <em>KMeans</em>:</p>
+<ul class="simple">
+<li><p>Sebanya4 klast ditentukan sebagai jumlah kelompok yang akan dibentuk.</p></li>
+<li><p>Model <em>KMeans</em> dilatih menggunakan data yang telah dinormalisasi (bukan hasil PCA).</p></li>
+<li><p>Setelah pelatihan, setiap data diberi label klaster berdasarkan kedekatannya ke pusat klaster yang dihitung oleh algoritma.</p></li>
+</ul>
+<ol class="arabic simple" start="3">
+<li><p>Evaluasi Hasil Clusteri</p></li>
+</ol>
+<p>Dua metrik evaluasi digunakan untuk menilai kualitas klaster:</p>
+<p>Inerti
+Ini merupakan jumlah total jarak kuadrat dari tiap titik ke pusat klaster terdekat. Semakin kecil nilainya, semakin baik, karena menandakan bahwa titik-titik dalam klaster lebih rapat satu sama lain.</p>
+<p>Silhouette Scor
+Ini mengukur seberapa mirip suatu titik dengan titik-titik dalam klasternya sendiri dibandingkan dengan klaster lain. Nilai berkisar antara -1 hingga 1, dengan nilai mendekati 1 menunjukkan pemisahan klaster yang baik.</p>
+<ol class="arabic simple" start="4">
+<li><p>Visualisasi Hasil Clustering</p></li>
+</ol>
+<p>Untuk memahami struktur klaster secara visual, hasil reduksi dimensi digunakan sebagai berikut:</p>
+<ul class="simple">
+<li><p>Visualisasi 2D:
+Data hasil reduksi ke dua dimensi diplot dalam bidang dua dimensi. Titik-titik berwarna berdasarkan klaster hasil <em>KMeans</em>. Visualisasi ini memudahkan dalam mengamati pola pemisahan klaster di bidang datar.</p></li>
+<li><p>Visualisasi 3
+Data hasil reduksi ke tiga dimensi divisualisasikan dalam ruang tiga dimensi menggunakan plot 3D. Ini memberikan perspektif tambahan terhadap struktur klaster dan distribusi data antar dimensi utama.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">silhouette_score</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>
 
-<span class="c1"># KMeans dengan 2 cluster</span>
-<span class="n">kmeans_2</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">labels_2</span> <span class="o">=</span> <span class="n">kmeans_2</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">scaled_features</span><span class="p">)</span>
+<span class="c1"># PCA 2D dan 3D</span>
+<span class="n">pca_2d</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">minmax_reduced_2d</span> <span class="o">=</span> <span class="n">pca_2d</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">minmax_scaled</span><span class="p">)</span>
 
-<span class="c1"># Metode evaluasi</span>
-<span class="n">inertia_2</span> <span class="o">=</span> <span class="n">kmeans_2</span><span class="o">.</span><span class="n">inertia_</span>
-<span class="n">silhouette_2</span> <span class="o">=</span> <span class="n">silhouette_score</span><span class="p">(</span><span class="n">scaled_features</span><span class="p">,</span> <span class="n">labels_2</span><span class="p">)</span>
+<span class="n">pca_3d</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">minmax_reduced_3d</span> <span class="o">=</span> <span class="n">pca_3d</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">minmax_scaled</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[2 Clusters] Inertia: </span><span class="si">{</span><span class="n">inertia_2</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, Silhouette Score: </span><span class="si">{</span><span class="n">silhouette_2</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="c1"># Visualisasi</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">reduced_features</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">reduced_features</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">labels_2</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;KMeans Clustering (2 Clusters)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;PCA 1&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;PCA 2&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2 Clusters] Inertia: 92.38, Silhouette Score: 0.9092
-</pre></div>
-</div>
-<img alt="_images/6b4c67dfb980e194fdba82d9cc2868af1f96b8bc756ba777b5f727a7e5f1bb06.png" src="_images/6b4c67dfb980e194fdba82d9cc2868af1f96b8bc756ba777b5f727a7e5f1bb06.png" />
-</div>
-</div>
-</section>
-<section id="clustering-visualisasi-3-cluster">
-<h2>Clustering + Visualisasi (3 Cluster)<a class="headerlink" href="#clustering-visualisasi-3-cluster" title="Link to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p>Evaluasi Hasil</p></li>
-</ol>
-<ul class="simple">
-<li><p>Inertia menunjukkan seberapa rapat data dalam cluster; nilai yang lebih rendah mengindikasikan pemisahan yang lebih baik.</p></li>
-<li><p>Silhouette Score mengukur seberapa baik titik-titik berada dalam cluster; semakin tinggi nilainya (mendekati 1), semakin baik pemisahan antar cluster.</p></li>
-</ul>
-<ol class="arabic simple" start="2">
-<li><p>Perbandingan Cluster</p></li>
-</ol>
-<ul class="simple">
-<li><p>Jika Silhouette Score untuk 2 cluster lebih tinggi, berarti data lebih cocok terbagi dalam 2 kelompok.</p></li>
-<li><p>Jika Silhouette Score untuk 3 cluster lebih tinggi, berarti pemisahan dengan 3 kelompok lebih baik.</p></li>
-<li><p>Jika Inertia berkurang secara signifikan, bisa jadi jumlah cluster lebih tinggi memberikan pemisahan lebih akurat.</p></li>
-</ul>
-<ol class="arabic simple" start="3">
-<li><p>Visualisasi</p></li>
-</ol>
-<ul class="simple">
-<li><p>Dengan melihat scatter plot dari hasil clustering, kamu bisa mengevaluasi seberapa jelas pemisahan antar kelompok.</p></li>
-<li><p>Jika terdapat overlap antara cluster, jumlah yang lebih rendah mungkin lebih cocok.</p></li>
-<li><p>Jika cluster tampak terlalu besar dan menyebar, mungkin perlu lebih banyak cluster atau metode lain seperti Hierarchical Clustering.</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># KMeans dengan 3 cluster</span>
-<span class="n">kmeans_3</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">labels_3</span> <span class="o">=</span> <span class="n">kmeans_3</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">scaled_features</span><span class="p">)</span>
-
-<span class="n">inertia_3</span> <span class="o">=</span> <span class="n">kmeans_3</span><span class="o">.</span><span class="n">inertia_</span>
-<span class="n">silhouette_3</span> <span class="o">=</span> <span class="n">silhouette_score</span><span class="p">(</span><span class="n">scaled_features</span><span class="p">,</span> <span class="n">labels_3</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[3 Clusters] Inertia: </span><span class="si">{</span><span class="n">inertia_3</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, Silhouette Score: </span><span class="si">{</span><span class="n">silhouette_3</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">reduced_features</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">reduced_features</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">labels_3</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;KMeans Clustering (3 Clusters)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;PCA 1&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;PCA 2&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3 Clusters] Inertia: 42.29, Silhouette Score: 0.8962
-</pre></div>
-</div>
-<img alt="_images/fb038bf6a3cc034476a52cae2da902b7b1e3832ac00c995fbd3d691d34b20b00.png" src="_images/fb038bf6a3cc034476a52cae2da902b7b1e3832ac00c995fbd3d691d34b20b00.png" />
-</div>
-</div>
-</section>
-<section id="clustering-visualisasi-4-cluster">
-<h2>Clustering + Visualisasi (4 Cluster)<a class="headerlink" href="#clustering-visualisasi-4-cluster" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Dengan 4 cluster, data bisa lebih terpisah dibandingkan sebelumnya.</p></li>
-<li><p>Jika Silhouette Score meningkat, maka pemisahan ini lebih efektif.</p></li>
-<li><p>Jika Inertia tidak berkurang signifikan, mungkin jumlah cluster terlalu banyak.</p></li>
-<li><p>Penting untuk membandingkan hasil dengan 2 dan 3 cluster untuk menentukan jumlah optimal.</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># KMeans dengan 4 cluster</span>
+<span class="c1"># KMeans dengan 4 cluster</span>
 <span class="n">kmeans_4</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">labels_4</span> <span class="o">=</span> <span class="n">kmeans_4</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">scaled_features</span><span class="p">)</span>
+<span class="n">labels_4</span> <span class="o">=</span> <span class="n">kmeans_4</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">minmax_scaled</span><span class="p">)</span>
 
+<span class="c1"># Evaluasi</span>
 <span class="n">inertia_4</span> <span class="o">=</span> <span class="n">kmeans_4</span><span class="o">.</span><span class="n">inertia_</span>
-<span class="n">silhouette_4</span> <span class="o">=</span> <span class="n">silhouette_score</span><span class="p">(</span><span class="n">scaled_features</span><span class="p">,</span> <span class="n">labels_4</span><span class="p">)</span>
+<span class="n">silhouette_4</span> <span class="o">=</span> <span class="n">silhouette_score</span><span class="p">(</span><span class="n">minmax_scaled</span><span class="p">,</span> <span class="n">labels_4</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[4 Clusters] Inertia: </span><span class="si">{</span><span class="n">inertia_4</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, Silhouette Score: </span><span class="si">{</span><span class="n">silhouette_4</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">reduced_features</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">reduced_features</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">labels_4</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;KMeans Clustering (4 Clusters)&quot;</span><span class="p">)</span>
+<span class="c1"># Visualisasi 2D (ukuran diperbesar)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>  <span class="c1"># Lebar ditambah</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">minmax_reduced_2d</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">minmax_reduced_2d</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">labels_4</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;KMeans Clustering (4 Clusters - 2D PCA)&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;PCA 1&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;PCA 2&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Visualisasi 3D (ukuran diperbesar)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>  <span class="c1"># Lebar ditambah</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">minmax_reduced_3d</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">minmax_reduced_3d</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">minmax_reduced_3d</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span>
+           <span class="n">c</span><span class="o">=</span><span class="n">labels_4</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;KMeans Clustering (4 Clusters - 3D PCA)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;PCA 1&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;PCA 2&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s2">&quot;PCA 3&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[4 Clusters] Inertia: 26.83, Silhouette Score: 0.8935
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[4 Clusters] Inertia: 1.06, Silhouette Score: 0.9007
 </pre></div>
 </div>
-<img alt="_images/ed3529871fb1f64775ed2930f7b94a8109f9c8761fbcbe2be500f51ca6f540ed.png" src="_images/ed3529871fb1f64775ed2930f7b94a8109f9c8761fbcbe2be500f51ca6f540ed.png" />
+<img alt="_images/3ba42586fe3d7b0ff8c1dcc61a538f93dc07f6d31510657016f13b27ac9934ed.png" src="_images/3ba42586fe3d7b0ff8c1dcc61a538f93dc07f6d31510657016f13b27ac9934ed.png" />
+<img alt="_images/ec9f6f0eeb236567dff3c03b790c4ae6293bd029104d295bb8ecb8c45e523c19.png" src="_images/ec9f6f0eeb236567dff3c03b790c4ae6293bd029104d295bb8ecb8c45e523c19.png" />
 </div>
 </div>
 </section>
@@ -844,7 +1402,8 @@
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bagian-awal-ambil-dan-gabungkan-data">Bagian Awal: Ambil dan Gabungkan Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-asli">Data asli</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-normalisasi">Data Normalisasi</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-dan-reduksi-dimensi">Preprocessing dan Reduksi Dimensi</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clustering-visualisasi-2-cluster">Clustering + Visualisasi (2 Cluster)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clustering-visualisasi-3-cluster">Clustering + Visualisasi (3 Cluster)</a></li>
