@@ -1,0 +1,992 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>TUGAS PRA UAS &#8212; 23-022 HERLY NABILA SAHQI PUTRI WANDANI</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'tugas_pra_uas';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="DISKRITITASI" href="diskrititasi.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/foto_saya.jpg" class="logo__image only-light" alt="23-022 HERLY NABILA SAHQI PUTRI WANDANI - Home"/>
+    <img src="_static/foto_saya.jpg" class="logo__image only-dark pst-js-only" alt="23-022 HERLY NABILA SAHQI PUTRI WANDANI - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to pendata
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="tugas1.html">Tugas1 Data mining</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="tugas2.html"><strong>Tugas 2 Data Understanding</strong></a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="LOF.html">LOF</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="UTS.html">UTS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="K_Means.html">K-MEANS CLUSTER 2, 3 DAN 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Fuzzy_C_Means.html">FUZZY C-MEANS CLUSTERING</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tree.html">Decission_Tree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diskrititasi.html">DISKRITITASI</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">TUGAS PRA UAS</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Ftugas_pra_uas.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/tugas_pra_uas.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>TUGAS PRA UAS</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-set">1. Data Set</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understanding">2.	Data understanding</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-fitur-atau-variable-data">a.	Fitur atau variable data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-ekplorasi-data">b. Ekplorasi data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-visualisasi">c. Visualisasi</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preprocessing">3. Data Preprocessing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-decision-tree-classification">4. Model: Decision Tree Classification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-model">5. Evaluasi Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-klasifikasi">Evaluasi Klasifikasi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-roc-curve-dan-auc">Analisis ROC Curve dan AUC</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-struktur-pohon-keputusan">Visualisasi Struktur Pohon Keputusan</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="tugas-pra-uas">
+<h1>TUGAS PRA UAS<a class="headerlink" href="#tugas-pra-uas" title="Link to this heading">#</a></h1>
+<section id="data-set">
+<h2>1. Data Set<a class="headerlink" href="#data-set" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://archive.ics.uci.edu/dataset/45/heart+disease">https://archive.ics.uci.edu/dataset/45/heart+disease</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span><span class="o">,</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span><span class="o">,</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span><span class="o">,</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span><span class="p">,</span> <span class="n">GridSearchCV</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span><span class="p">,</span> <span class="n">plot_tree</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">roc_curve</span><span class="p">,</span> <span class="n">roc_auc_score</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="data-understanding">
+<h2>2.	Data understanding<a class="headerlink" href="#data-understanding" title="Link to this heading">#</a></h2>
+<section id="a-fitur-atau-variable-data">
+<h3>a.	Fitur atau variable data<a class="headerlink" href="#a-fitur-atau-variable-data" title="Link to this heading">#</a></h3>
+<p>Berdasarkan dokumentasi dataset Cleveland (14 fitur utama + target <code class="docutils literal notranslate"><span class="pre">num</span></code>):</p>
+<ul class="simple">
+<li><p><strong>age</strong>: usia pasien (tahun)</p></li>
+<li><p><strong>sex</strong>: jenis kelamin (1=pria, 0=wanita)</p></li>
+<li><p><strong>cp</strong>: tipe nyeri dada (1–4: tipikal, atipikal, non-anginal, asimtomatik)</p></li>
+<li><p><strong>trestbps</strong>: tekanan darah istirahat (mm Hg)</p></li>
+<li><p><strong>chol</strong>: kolesterol serum (mg/dl)</p></li>
+<li><p><strong>fbs</strong>: gula darah puasa &gt; 120 mg/dl (1 = ya, 0 = tidak)</p></li>
+<li><p><strong>restecg</strong>: hasil ECG istirahat (0=normal, 1=ST-T abnormal, 2=LV hypertrophy)</p></li>
+<li><p><strong>thalach</strong>: denyut jantung maksimum dicapai</p></li>
+<li><p><strong>exang</strong>: angina akibat latihan (1 = ya, 0 = tidak)</p></li>
+<li><p><strong>oldpeak</strong>: depresi ST karena latihan relatif istirahat</p></li>
+<li><p><strong>slope</strong>: kemiringan segmen ST saat puncak latihan (1 = naik, 2 = datar, 3 = turun)</p></li>
+<li><p><strong>ca</strong>: jumlah pembuluh utama (0–3) terlihat melalui fluoroskopi</p></li>
+<li><p><strong>thal</strong>: hasil tes thalassemia (3 = normal, 6 = fixed defect, 7 = reversible defect)</p></li>
+<li><p><strong>num</strong> <em>(target)</em>: 0 = tidak ada penyakit, 1–4 = adanya penyakit (biasanya dibinerisasi menjadi 0/1)</p></li>
+</ul>
+</section>
+<section id="b-ekplorasi-data">
+<h3>b. Ekplorasi data<a class="headerlink" href="#b-ekplorasi-data" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Missing values</strong>: Beberapa dataset (Hungary, Switzerland, Cleveland) memiliki missing di fitur seperti <code class="docutils literal notranslate"><span class="pre">ca</span></code>, <code class="docutils literal notranslate"><span class="pre">thal</span></code> perlu dicek &amp; imputasi jika diperlukan .</p></li>
+<li><p><strong>Outlier</strong>: Beberapa fitur numerik seperti <code class="docutils literal notranslate"><span class="pre">chol</span></code>, <code class="docutils literal notranslate"><span class="pre">trestbps</span></code>, <code class="docutils literal notranslate"><span class="pre">oldpeak</span></code> punya outlier ekstrem. Identifikasi lewat boxplot IQR/visualisasi.</p></li>
+<li><p><strong>Distribusi</strong>: Fitur kategorikal (<code class="docutils literal notranslate"><span class="pre">cp</span></code>, <code class="docutils literal notranslate"><span class="pre">sex</span></code>, <code class="docutils literal notranslate"><span class="pre">exang</span></code>, <code class="docutils literal notranslate"><span class="pre">slope</span></code>) perlu dicek distribusinya, fitur numerik bisa dilihat dari histogram dan density plot.</p></li>
+</ul>
+<p>Dataset Cleveland dari UCI dimuat dari file yang tidak memiliki header, sehingga setiap kolom diberi nama secara manual agar dapat dikenali dan dianalisis dengan baik. Setelah data dimuat, dilakukan pengecekan terhadap nilai hilang. Dataset ini menggunakan tanda “?” sebagai indikator nilai yang hilang, sehingga karakter tersebut diganti dengan nilai <code class="docutils literal notranslate"><span class="pre">NaN</span></code> agar dapat dikenali dan diproses oleh sistem.</p>
+<p>Setelah nilai hilang ditandai dengan <code class="docutils literal notranslate"><span class="pre">NaN</span></code>, dilakukan perhitungan jumlah missing value untuk setiap kolom. Hasilnya menunjukkan bahwa kolom <code class="docutils literal notranslate"><span class="pre">ca</span></code> dan <code class="docutils literal notranslate"><span class="pre">thal</span></code> merupakan fitur yang memiliki nilai kosong. Kedua kolom tersebut pada awalnya bertipe data objek (karena mengandung karakter “?”), sehingga perlu dikonversi menjadi numerik. Proses konversi dilakukan dengan mengubah seluruh isi kolom ke tipe numerik, dan bila terdapat nilai yang tidak bisa diubah, akan secara otomatis dijadikan <code class="docutils literal notranslate"><span class="pre">NaN</span></code>.</p>
+<p>Selanjutnya, dilakukan eksplorasi visual untuk mendeteksi nilai-nilai ekstrem atau outlier pada fitur-fitur numerik. Lima fitur dipilih untuk divisualisasikan, yaitu <code class="docutils literal notranslate"><span class="pre">age</span></code>, <code class="docutils literal notranslate"><span class="pre">trestbps</span></code>, <code class="docutils literal notranslate"><span class="pre">chol</span></code>, <code class="docutils literal notranslate"><span class="pre">thalach</span></code>, dan <code class="docutils literal notranslate"><span class="pre">oldpeak</span></code>. Masing-masing fitur ditampilkan dalam bentuk boxplot. Melalui boxplot ini, dapat dilihat sebaran data, nilai minimum dan maksimum, serta apakah terdapat nilai yang berada jauh di luar rentang mayoritas data (yang ditandai dengan titik-titik di luar kotak atau whisker). Outlier ini penting untuk diidentifikasi karena dapat mempengaruhi interpretasi data atau proses pelatihan model, terutama jika algoritma yang digunakan sensitif terhadap nilai ekstrem.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load data</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="s2">&quot;https://archive.ics.uci.edu/ml/machine-learning-databases/heart-disease/processed.cleveland.data&quot;</span><span class="p">,</span>
+    <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">,</span> <span class="s2">&quot;sex&quot;</span><span class="p">,</span> <span class="s2">&quot;cp&quot;</span><span class="p">,</span> <span class="s2">&quot;trestbps&quot;</span><span class="p">,</span> <span class="s2">&quot;chol&quot;</span><span class="p">,</span> <span class="s2">&quot;fbs&quot;</span><span class="p">,</span> <span class="s2">&quot;restecg&quot;</span><span class="p">,</span> <span class="s2">&quot;thalach&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;exang&quot;</span><span class="p">,</span> <span class="s2">&quot;oldpeak&quot;</span><span class="p">,</span> <span class="s2">&quot;slope&quot;</span><span class="p">,</span> <span class="s2">&quot;ca&quot;</span><span class="p">,</span> <span class="s2">&quot;thal&quot;</span><span class="p">,</span> <span class="s2">&quot;target&quot;</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="c1"># Cek nilai hilang (&quot;?&quot; dianggap missing)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;?&quot;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">NA</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">missing</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Jumlah missing value per kolom:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">missing</span><span class="p">)</span>
+
+<span class="c1"># Konversi kolom numerik yang ada missing-nya</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;ca&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;ca&quot;</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;thal&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;thal&quot;</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span>
+
+<span class="c1"># Cek outlier dengan boxplot</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="n">numeric_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">,</span> <span class="s2">&quot;trestbps&quot;</span><span class="p">,</span> <span class="s2">&quot;chol&quot;</span><span class="p">,</span> <span class="s2">&quot;thalach&quot;</span><span class="p">,</span> <span class="s2">&quot;oldpeak&quot;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">numeric_cols</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Boxplot: </span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jumlah missing value per kolom:
+age         0
+sex         0
+cp          0
+trestbps    0
+chol        0
+fbs         0
+restecg     0
+thalach     0
+exang       0
+oldpeak     0
+slope       0
+ca          4
+thal        2
+target      0
+dtype: int64
+</pre></div>
+</div>
+<img alt="_images/8b0cf9d832383238247de537ee1beda4bde1e3991a7559a2144bc3ab08b543ba.png" src="_images/8b0cf9d832383238247de537ee1beda4bde1e3991a7559a2144bc3ab08b543ba.png" />
+<img alt="_images/17ca942f1bd30abec949fa1e5b84e1d547269e3911bf7b76d379d5e3605ed9b6.png" src="_images/17ca942f1bd30abec949fa1e5b84e1d547269e3911bf7b76d379d5e3605ed9b6.png" />
+<img alt="_images/3d2e8e773c5daff7b234f899bdf815d57bd7a3e32674ccce5ea60a0a35106177.png" src="_images/3d2e8e773c5daff7b234f899bdf815d57bd7a3e32674ccce5ea60a0a35106177.png" />
+<img alt="_images/9783ac9558c8fab8f101931f4a2d7141e21384b64fd24ee0d7aee93794d5cc4c.png" src="_images/9783ac9558c8fab8f101931f4a2d7141e21384b64fd24ee0d7aee93794d5cc4c.png" />
+<img alt="_images/e94055aa032b828a3ee08788efb0c790a9f241ff89d7d07982c26389cc299a07.png" src="_images/e94055aa032b828a3ee08788efb0c790a9f241ff89d7d07982c26389cc299a07.png" />
+</div>
+</div>
+</section>
+<section id="c-visualisasi">
+<h3>c. Visualisasi<a class="headerlink" href="#c-visualisasi" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Histogram/boxplot</strong> distribusi tiap fitur numerik untuk deteksi outlier &amp; skewness.</p></li>
+<li><p><strong>Bar chart</strong> untuk kategori (<code class="docutils literal notranslate"><span class="pre">cp</span></code>, <code class="docutils literal notranslate"><span class="pre">thal</span></code>, <code class="docutils literal notranslate"><span class="pre">exang</span></code>).</p></li>
+<li><p><strong>Correlation heatmap</strong> antara fitur-fitur numerik, dan antara fitur dan target.</p></li>
+<li><p><strong>Pairplot atau scatter</strong> untuk hubungan antara variabel dan label.</p></li>
+<li><p><strong>Countplot</strong> pembagian label (<code class="docutils literal notranslate"><span class="pre">num</span></code> binari).</p></li>
+</ul>
+<p>Setelah data dibersihkan dari nilai-nilai kosong dengan menggunakan fungsi <code class="docutils literal notranslate"><span class="pre">dropna()</span></code>, semua baris yang memiliki setidaknya satu nilai <code class="docutils literal notranslate"><span class="pre">NaN</span></code> dihapus dari dataset. Langkah ini memastikan bahwa seluruh data yang akan diproses pada tahap selanjutnya adalah lengkap dan tidak mengandung informasi yang hilang.</p>
+<p>Kolom <code class="docutils literal notranslate"><span class="pre">target</span></code> yang awalnya mengandung nilai numerik dari 0 hingga 4 kemudian dikonversi menjadi biner. Hal ini dilakukan karena dalam konteks analisis ini, fokusnya adalah membedakan antara pasien yang memiliki indikasi penyakit jantung dan yang tidak. Nilai <code class="docutils literal notranslate"><span class="pre">0</span></code> menandakan tidak ada penyakit, sementara nilai <code class="docutils literal notranslate"><span class="pre">1</span></code> mewakili adanya kondisi jantung (yang semula ditandai oleh nilai 1 hingga 4). Dengan demikian, klasifikasi dikembalikan ke bentuk dua kelas (binary classification), yaitu <code class="docutils literal notranslate"><span class="pre">0</span></code> dan <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
+<p>Setelah data bersih dan target telah diklasifikasikan ulang, dilakukan analisis korelasi antar fitur. Visualisasi ini menggunakan heatmap yang menampilkan nilai korelasi Pearson antara setiap pasangan fitur numerik. Warna dalam heatmap menunjukkan seberapa kuat hubungan antar fitur, dengan nilai mendekati 1 atau -1 menunjukkan hubungan yang kuat (positif atau negatif), dan nilai mendekati 0 menunjukkan tidak ada korelasi yang signifikan. Heatmap ini berguna untuk mengidentifikasi fitur yang saling berkaitan atau redundant, serta melihat fitur mana yang paling berhubungan dengan target.</p>
+<p>Terakhir, distribusi kelas target ditampilkan menggunakan countplot. Grafik ini menunjukkan jumlah data pada masing-masing kelas, yaitu jumlah pasien yang tidak memiliki penyakit jantung (<code class="docutils literal notranslate"><span class="pre">0</span></code>) dan yang memiliki (<code class="docutils literal notranslate"><span class="pre">1</span></code>). Visualisasi ini membantu untuk mengetahui apakah data target seimbang atau tidak. Jika distribusi sangat timpang, hal ini bisa menjadi pertimbangan untuk penyesuaian model atau teknik sampling selanjutnya.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Hapus data yang masih ada nilai kosong</span>
+<span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Ubah target menjadi biner: 0 (tidak sakit), 1 (sakit)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Korelasi antar fitur</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">corr</span><span class="p">(),</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;coolwarm&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Korelasi antar fitur&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Distribusi target</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;target&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Distribusi Kelas Target (Penyakit Jantung)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;0 = Tidak, 1 = Ada&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/24f3f6939109fd257f04bb5ddd965fd13f007d5ffa138220d535cc3edbff62dc.png" src="_images/24f3f6939109fd257f04bb5ddd965fd13f007d5ffa138220d535cc3edbff62dc.png" />
+<img alt="_images/b75f069681a97cd3d277299ab5f78ad6fb7128a5d71b28a8215ecf052c65502d.png" src="_images/b75f069681a97cd3d277299ab5f78ad6fb7128a5d71b28a8215ecf052c65502d.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="data-preprocessing">
+<h2>3. Data Preprocessing<a class="headerlink" href="#data-preprocessing" title="Link to this heading">#</a></h2>
+<p>Langkah yang general digunakan:</p>
+<ol class="arabic simple">
+<li><p><strong>Handling missing</strong></p>
+<ul class="simple">
+<li><p>Jika missing relatif sedikit (misal &lt;5%), perform imputasi (mean/median) atau hapus baris.</p></li>
+</ul>
+</li>
+<li><p><strong>Encoding fitur kategorikal</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cp</span></code>, <code class="docutils literal notranslate"><span class="pre">restecg</span></code>, <code class="docutils literal notranslate"><span class="pre">slope</span></code>, <code class="docutils literal notranslate"><span class="pre">thal</span></code>, <code class="docutils literal notranslate"><span class="pre">sex</span></code>, <code class="docutils literal notranslate"><span class="pre">fbs</span></code>, <code class="docutils literal notranslate"><span class="pre">exang</span></code>: menggunakan one-hot (untuk dt bisa jugak label encoding).</p></li>
+</ul>
+</li>
+<li><p><strong>Normalisasi / scaling</strong></p>
+<ul class="simple">
+<li><p>Untuk decision tree umumnya tidak diperlukan, tapi bisa diuji.</p></li>
+</ul>
+</li>
+<li><p><strong>Feature engineering</strong> (opsional)</p>
+<ul class="simple">
+<li><p>Contoh: pembuatan bin seperti <code class="docutils literal notranslate"><span class="pre">age_group</span></code>, rasio faktor risiko, polinomial.</p></li>
+</ul>
+</li>
+<li><p><strong>Feature selection / reduksi dimensi (opsional)</strong></p>
+<ul class="simple">
+<li><p>Bisa gunakan PCA atau seleksi berbasis feature importance decision tree.</p></li>
+</ul>
+</li>
+</ol>
+<p>Dataset <em>Heart Disease</em> dimuat dari sumber UCI dengan memberikan nama-nama kolom secara manual. Setelah data dimuat, nilai “?” yang menandakan data hilang diganti dengan <code class="docutils literal notranslate"><span class="pre">np.nan</span></code>, agar dapat dikenali sebagai nilai kosong oleh pustaka <code class="docutils literal notranslate"><span class="pre">pandas</span></code>. Dua kolom yang mengandung data bertipe non-numerik karena nilai “?” (<code class="docutils literal notranslate"><span class="pre">ca</span></code> dan <code class="docutils literal notranslate"><span class="pre">thal</span></code>) kemudian dikonversi menjadi tipe data numerik menggunakan fungsi <code class="docutils literal notranslate"><span class="pre">pd.to_numeric</span></code> dengan parameter <code class="docutils literal notranslate"><span class="pre">errors='coerce'</span></code>, yang secara otomatis mengubah data yang tidak dapat dikonversi menjadi <code class="docutils literal notranslate"><span class="pre">NaN</span></code>.</p>
+<p>Setelah nilai hilang dikenali, dilakukan pencetakan jumlah nilai kosong per kolom untuk melihat sebarannya. Baris-baris yang mengandung <code class="docutils literal notranslate"><span class="pre">NaN</span></code> dihapus dari dataset menggunakan <code class="docutils literal notranslate"><span class="pre">dropna()</span></code>, untuk memastikan bahwa seluruh data yang tersisa lengkap dan siap untuk diproses lebih lanjut. Jumlah total data setelah pembersihan dicetak untuk diketahui.</p>
+<p>Langkah selanjutnya adalah menyederhanakan label target menjadi dua kelas. Nilai pada kolom <code class="docutils literal notranslate"><span class="pre">target</span></code>, yang awalnya memiliki nilai 0–4, dikonversi menjadi <code class="docutils literal notranslate"><span class="pre">int</span></code> dan diubah menjadi biner dengan aturan: nilai 0 tetap sebagai 0 (menandakan tidak sakit), sementara nilai di atas 0 diubah menjadi 1 (menandakan indikasi penyakit jantung).</p>
+<p>Setelah itu, dilakukan proses one-hot encoding terhadap kolom-kolom kategorikal, yaitu <code class="docutils literal notranslate"><span class="pre">cp</span></code>, <code class="docutils literal notranslate"><span class="pre">restecg</span></code>, <code class="docutils literal notranslate"><span class="pre">slope</span></code>, dan <code class="docutils literal notranslate"><span class="pre">thal</span></code>. One-hot encoding dilakukan untuk mengubah data kategorikal menjadi format numerik biner, agar dapat digunakan dalam proses pelatihan model. Parameter <code class="docutils literal notranslate"><span class="pre">drop_first=True</span></code> digunakan agar salah satu kategori dihapus sebagai referensi untuk menghindari multikolinearitas.</p>
+<p>Dataset kemudian dipisahkan menjadi fitur (X) dan target (y). Proses split data dilakukan dengan <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code>, di mana 70% data digunakan untuk pelatihan (training), dan 30% sisanya digunakan untuk pengujian (testing). Parameter <code class="docutils literal notranslate"><span class="pre">stratify=y</span></code> memastikan distribusi label target tetap seimbang di kedua subset data.</p>
+<p>Setelah pembagian data dilakukan, dicetak informasi penting terkait dataset: jumlah fitur yang digunakan, jumlah total data, serta jumlah data pelatihan dan pengujian. Selain itu, distribusi kelas target ditampilkan dalam bentuk proporsi untuk masing-masing subset (train dan test), guna memastikan tidak terjadi ketimpangan data. Terakhir, lima baris pertama dari data fitur pelatihan (<code class="docutils literal notranslate"><span class="pre">X_train</span></code>) ditampilkan sebagai contoh.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import pustaka yang diperlukan</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="c1"># Load Data</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://archive.ics.uci.edu/ml/machine-learning-databases/heart-disease/processed.cleveland.data&quot;</span>
+<span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">,</span> <span class="s2">&quot;sex&quot;</span><span class="p">,</span> <span class="s2">&quot;cp&quot;</span><span class="p">,</span> <span class="s2">&quot;trestbps&quot;</span><span class="p">,</span> <span class="s2">&quot;chol&quot;</span><span class="p">,</span> <span class="s2">&quot;fbs&quot;</span><span class="p">,</span> <span class="s2">&quot;restecg&quot;</span><span class="p">,</span> <span class="s2">&quot;thalach&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;exang&quot;</span><span class="p">,</span> <span class="s2">&quot;oldpeak&quot;</span><span class="p">,</span> <span class="s2">&quot;slope&quot;</span><span class="p">,</span> <span class="s2">&quot;ca&quot;</span><span class="p">,</span> <span class="s2">&quot;thal&quot;</span><span class="p">,</span> <span class="s2">&quot;target&quot;</span><span class="p">]</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span>
+
+<span class="c1"># Tangani missing value (nilai &quot;?&quot;)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;?&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;ca&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;ca&quot;</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;coerce&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;thal&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;thal&quot;</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;coerce&quot;</span><span class="p">)</span>
+
+<span class="c1"># Cek jumlah nilai kosong</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; Missing value per kolom:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+
+<span class="c1"># Drop baris dengan missing value</span>
+<span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Jumlah data setelah drop missing value: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="si">}</span><span class="s2"> baris&quot;</span><span class="p">)</span>
+
+<span class="c1"># Konversi label target menjadi biner</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># One-hot encoding untuk kolom kategorikal</span>
+<span class="n">df_encoded</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;cp&quot;</span><span class="p">,</span> <span class="s2">&quot;restecg&quot;</span><span class="p">,</span> <span class="s2">&quot;slope&quot;</span><span class="p">,</span> <span class="s2">&quot;thal&quot;</span><span class="p">],</span> <span class="n">drop_first</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Pisahkan fitur dan label</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df_encoded</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;target&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df_encoded</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">]</span>
+
+<span class="c1">#  Split data menjadi train dan test</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y</span>
+<span class="p">)</span>
+
+<span class="c1">#  Tampilkan informasi hasil split</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Informasi dataset:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- Jumlah fitur       : </span><span class="si">{</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- Total data         : </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- Data latih (train) : </span><span class="si">{</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- Data uji   (test)  : </span><span class="si">{</span><span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1">#  Cek proporsi kelas</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Distribusi label (target):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Train set:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y_train</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="mi">0</span><span class="p">:</span> <span class="s2">&quot;Tidak sakit&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;Sakit&quot;</span><span class="p">}))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test set:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y_test</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="mi">0</span><span class="p">:</span> <span class="s2">&quot;Tidak sakit&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;Sakit&quot;</span><span class="p">}))</span>
+
+<span class="c1"># Tampilkan 5 baris pertama dari X_train</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Contoh data X_train:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Missing value per kolom:
+ age         0
+sex         0
+cp          0
+trestbps    0
+chol        0
+fbs         0
+restecg     0
+thalach     0
+exang       0
+oldpeak     0
+slope       0
+ca          4
+thal        2
+target      0
+dtype: int64
+
+ Jumlah data setelah drop missing value: 297 baris
+
+ Informasi dataset:
+- Jumlah fitur       : 18
+- Total data         : 297
+- Data latih (train) : 207
+- Data uji   (test)  : 90
+
+ Distribusi label (target):
+Train set:
+target
+Tidak sakit    0.541063
+Sakit          0.458937
+Name: proportion, dtype: float64
+Test set:
+target
+Tidak sakit    0.533333
+Sakit          0.466667
+Name: proportion, dtype: float64
+
+ Contoh data X_train:
+      age  sex  trestbps   chol  fbs  thalach  exang  oldpeak   ca  cp_2.0  \
+115  41.0  1.0     135.0  203.0  0.0    132.0    0.0      0.0  0.0    True   
+94   63.0  0.0     135.0  252.0  0.0    172.0    0.0      0.0  0.0   False   
+186  42.0  1.0     120.0  240.0  1.0    194.0    0.0      0.8  0.0   False   
+68   59.0  1.0     170.0  326.0  0.0    140.0    1.0      3.4  0.0   False   
+86   47.0  1.0     138.0  257.0  0.0    156.0    0.0      0.0  0.0   False   
+
+     cp_3.0  cp_4.0  restecg_1.0  restecg_2.0  slope_2.0  slope_3.0  thal_6.0  \
+115   False   False        False        False       True      False      True   
+94     True   False        False         True      False      False     False   
+186    True   False        False        False      False       True     False   
+68    False    True        False         True      False       True     False   
+86     True   False        False         True      False      False     False   
+
+     thal_7.0  
+115     False  
+94      False  
+186      True  
+68       True  
+86      False  
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="model-decision-tree-classification">
+<h2>4. Model: Decision Tree Classification<a class="headerlink" href="#model-decision-tree-classification" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Ubah num menjadi biner: 0 (no disease) vs ≥1 (disease).</p></li>
+<li><p>Bagi data train/test (misal 70/30) dengan stratifikasi label.</p></li>
+<li><p>Bangun model decision tree (scikit‑learn DecisionTreeClassifier) dengan parameter: max_depth, min_samples_leaf, dan criterion (gini/entropy).</p></li>
+<li><p>Gunakan cross-validation untuk tuning hyperparameter (GridSearchCV).</p></li>
+<li><p>Visualisasikan pohon untuk interpretasi fitur penting.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
+
+<span class="c1"># Grid search untuk mencari parameter terbaik</span>
+<span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;max_depth&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span>
+    <span class="s2">&quot;min_samples_leaf&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
+    <span class="s2">&quot;criterion&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;gini&quot;</span><span class="p">,</span> <span class="s2">&quot;entropy&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="n">grid</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span>
+    <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">),</span>
+    <span class="n">param_grid</span><span class="p">,</span>
+    <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">scoring</span><span class="o">=</span><span class="s2">&quot;f1&quot;</span>
+<span class="p">)</span>
+<span class="n">grid</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Model terbaik</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">best_estimator_</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Parameter terbaik:&quot;</span><span class="p">,</span> <span class="n">grid</span><span class="o">.</span><span class="n">best_params_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Parameter terbaik: {&#39;criterion&#39;: &#39;entropy&#39;, &#39;max_depth&#39;: 3, &#39;min_samples_leaf&#39;: 1}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="evaluasi-model">
+<h2>5. Evaluasi Model<a class="headerlink" href="#evaluasi-model" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Ukur performa menggunakan:</p>
+<ul>
+<li><p><strong>Accuracy</strong>, <strong>Precision</strong>, <strong>Recall</strong>, <strong>F1‑score</strong>, <strong>ROC-AUC</strong>.</p></li>
+</ul>
+</li>
+<li><p>Tampilkan:</p>
+<ul>
+<li><p><strong>Confusion matrix</strong>.</p></li>
+<li><p><strong>ROC curve</strong> dengan AUC.</p></li>
+</ul>
+</li>
+<li><p>Interpretasi hasil:</p>
+<ul>
+<li><p>Bandingkan performance antar parameter; seimbangkan antara overfitting (terlalu dalam) dan underfitting (terlalu dangkal).</p></li>
+</ul>
+</li>
+</ul>
+<p>Setelah model terbaik diperoleh melalui proses Grid Search, dilakukan evaluasi kinerjanya menggunakan data uji. Prediksi dilakukan dalam dua bentuk: kelas prediksi (<code class="docutils literal notranslate"><span class="pre">y_pred</span></code>) dan probabilitas prediksi (<code class="docutils literal notranslate"><span class="pre">y_proba</span></code>). Kelas prediksi digunakan untuk evaluasi klasifikasi secara umum, sedangkan probabilitas digunakan untuk analisis lebih lanjut seperti ROC Curve.</p>
+<section id="evaluasi-klasifikasi">
+<h3>Evaluasi Klasifikasi<a class="headerlink" href="#evaluasi-klasifikasi" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Classification Report</strong>
+Fungsi <code class="docutils literal notranslate"><span class="pre">classification_report</span></code> dari <code class="docutils literal notranslate"><span class="pre">sklearn.metrics</span></code> menghasilkan metrik evaluasi standar klasifikasi: precision, recall, f1-score, dan support untuk masing-masing kelas. Metrik ini berguna untuk melihat kekuatan dan kelemahan model, terutama pada klasifikasi biner dengan distribusi kelas yang tidak seimbang.</p></li>
+<li><p><strong>Confusion Matrix</strong>
+Matriks ini menampilkan jumlah prediksi benar dan salah untuk masing-masing kelas. Nilai ini membantu memahami tipe kesalahan yang paling sering dilakukan model (false positives dan false negatives).</p></li>
+</ol>
+</section>
+<section id="analisis-roc-curve-dan-auc">
+<h3>Analisis ROC Curve dan AUC<a class="headerlink" href="#analisis-roc-curve-dan-auc" title="Link to this heading">#</a></h3>
+<ol class="arabic" start="3">
+<li><p><strong>ROC Curve dan AUC Score</strong>
+ROC (Receiver Operating Characteristic) Curve dibuat dengan menghitung True Positive Rate (TPR) dan False Positive Rate (FPR) dari probabilitas prediksi. Skor AUC (Area Under the Curve) dihitung menggunakan <code class="docutils literal notranslate"><span class="pre">roc_auc_score</span></code> dan mencerminkan kemampuan model membedakan antara dua kelas. Nilai AUC mendekati 1 menandakan model yang sangat baik.</p>
+<p>Visualisasi ROC Curve menampilkan kurva TPR terhadap FPR. Garis diagonal abu-abu sebagai referensi menggambarkan model acak. Kurva model yang berada jauh di atas garis tersebut menunjukkan performa yang lebih baik dari tebakan acak.</p>
+</li>
+</ol>
+</section>
+<section id="visualisasi-struktur-pohon-keputusan">
+<h3>Visualisasi Struktur Pohon Keputusan<a class="headerlink" href="#visualisasi-struktur-pohon-keputusan" title="Link to this heading">#</a></h3>
+<ol class="arabic simple" start="4">
+<li><p><strong>Visualisasi Decision Tree</strong>
+Setelah evaluasi, dilakukan visualisasi struktur pohon keputusan menggunakan <code class="docutils literal notranslate"><span class="pre">plot_tree</span></code>. Visualisasi ini menunjukkan bagaimana model membuat keputusan berdasarkan fitur-fitur yang digunakan, nilai split, dan distribusi kelas di setiap node. Visualisasi membantu dalam interpretasi model karena Decision Tree bersifat transparan dan mudah dipahami.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">roc_curve</span><span class="p">,</span> <span class="n">roc_auc_score</span>
+
+<span class="c1"># Prediksi dan evaluasi</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">y_proba</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Classification report</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Classification Report:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+
+<span class="c1"># Confusion matrix</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Confusion Matrix:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+
+<span class="c1"># ROC Curve</span>
+<span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">roc_curve</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_proba</span><span class="p">)</span>
+<span class="n">roc_score</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_proba</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ROC AUC Score:&quot;</span><span class="p">,</span> <span class="n">roc_score</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;AUC = </span><span class="si">{</span><span class="n">roc_score</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;False Positive Rate&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;True Positive Rate&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;ROC Curve&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Visualisasi pohon</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">plot_tree</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">plot_tree</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">class_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;No&quot;</span><span class="p">,</span> <span class="s2">&quot;Yes&quot;</span><span class="p">],</span> <span class="n">filled</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Visualisasi Pohon Keputusan&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Classification Report:
+
+              precision    recall  f1-score   support
+
+           0       0.76      0.81      0.79        48
+           1       0.77      0.71      0.74        42
+
+    accuracy                           0.77        90
+   macro avg       0.77      0.76      0.76        90
+weighted avg       0.77      0.77      0.77        90
+
+Confusion Matrix:
+[[39  9]
+ [12 30]]
+ROC AUC Score: 0.8653273809523809
+</pre></div>
+</div>
+<img alt="_images/0d1260c80f263f127bd21e3a673e22ea6f0df68ef8d88ef5b8e1621864f8e3b8.png" src="_images/0d1260c80f263f127bd21e3a673e22ea6f0df68ef8d88ef5b8e1621864f8e3b8.png" />
+<img alt="_images/535da06c32646f0d9622197ad10fb8d2680e53c16c9953347f03155e1d3a7f9d.png" src="_images/535da06c32646f0d9622197ad10fb8d2680e53c16c9953347f03155e1d3a7f9d.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="diskrititasi.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">DISKRITITASI</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-set">1. Data Set</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understanding">2.	Data understanding</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-fitur-atau-variable-data">a.	Fitur atau variable data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-ekplorasi-data">b. Ekplorasi data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-visualisasi">c. Visualisasi</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preprocessing">3. Data Preprocessing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-decision-tree-classification">4. Model: Decision Tree Classification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-model">5. Evaluasi Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-klasifikasi">Evaluasi Klasifikasi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-roc-curve-dan-auc">Analisis ROC Curve dan AUC</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-struktur-pohon-keputusan">Visualisasi Struktur Pohon Keputusan</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By HERLY NABILA
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
