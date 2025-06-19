@@ -374,18 +374,16 @@
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-set">1. Data Set</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understanding">2.	Data understanding</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understanding">2.	Data Understanding</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-fitur-atau-variable-data">a.	Fitur atau variable data</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-ekplorasi-data">b. Ekplorasi data</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-visualisasi">c. Visualisasi</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preprocessing">3. Data Preprocessing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-decision-tree-classification">4. Model: Decision Tree Classification</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-model">5. Evaluasi Model</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-klasifikasi">Evaluasi Klasifikasi</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-roc-curve-dan-auc">Analisis ROC Curve dan AUC</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-struktur-pohon-keputusan">Visualisasi Struktur Pohon Keputusan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-decision-tree-random-forest-naive-bayes-classification">4. Model: Decision Tree, Random Forest, Naive Bayes Classification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-model">5.	Evaluasi Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan-perbandingan-model">**Kesimpulan Perbandingan Model:</a></li>
 </ul>
 </li>
 </ul>
@@ -490,7 +488,7 @@ Requirement already satisfied: six&gt;=1.5 in /home/codespace/.local/lib/python3
 </div>
 </section>
 <section id="data-understanding">
-<h2>2.	Data understanding<a class="headerlink" href="#data-understanding" title="Link to this heading">#</a></h2>
+<h2>2.	Data Understanding<a class="headerlink" href="#data-understanding" title="Link to this heading">#</a></h2>
 <section id="a-fitur-atau-variable-data">
 <h3>a.	Fitur atau variable data<a class="headerlink" href="#a-fitur-atau-variable-data" title="Link to this heading">#</a></h3>
 <p>Berdasarkan dokumentasi dataset Cleveland (14 fitur utama + target <code class="docutils literal notranslate"><span class="pre">num</span></code>):</p>
@@ -626,6 +624,7 @@ dtype: int64
 </section>
 <section id="data-preprocessing">
 <h2>3. Data Preprocessing<a class="headerlink" href="#data-preprocessing" title="Link to this heading">#</a></h2>
+<p>Langkah yang general digunakan:</p>
 <ol class="arabic simple">
 <li><p><strong>Handling missing</strong></p>
 <ul class="simple">
@@ -785,8 +784,8 @@ Name: proportion, dtype: float64
 </div>
 </div>
 </section>
-<section id="model-decision-tree-classification">
-<h2>4. Model: Decision Tree Classification<a class="headerlink" href="#model-decision-tree-classification" title="Link to this heading">#</a></h2>
+<section id="model-decision-tree-random-forest-naive-bayes-classification">
+<h2>4. Model: Decision Tree, Random Forest, Naive Bayes Classification<a class="headerlink" href="#model-decision-tree-random-forest-naive-bayes-classification" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Ubah num menjadi biner: 0 (no disease) vs ≥1 (disease).</p></li>
 <li><p>Bagi data train/test (misal 70/30) dengan stratifikasi label.</p></li>
@@ -796,10 +795,22 @@ Name: proportion, dtype: float64
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># === IMPORT LIBRARY ===</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span><span class="p">,</span> <span class="n">plot_tree</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">confusion_matrix</span><span class="p">,</span>
+    <span class="n">classification_report</span><span class="p">,</span>
+    <span class="n">accuracy_score</span><span class="p">,</span>
+    <span class="n">roc_auc_score</span><span class="p">,</span>
+    <span class="n">roc_curve</span>
+<span class="p">)</span>
 
-<span class="c1"># Grid search untuk mencari parameter terbaik</span>
+<span class="c1"># === DECISION TREE (TUNED) ===</span>
 <span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;max_depth&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span>
     <span class="s2">&quot;min_samples_leaf&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
@@ -814,106 +825,141 @@ Name: proportion, dtype: float64
 <span class="p">)</span>
 <span class="n">grid</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 
-<span class="c1"># Model terbaik</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">best_estimator_</span>
+<span class="n">model_dt</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">best_estimator_</span>
+<span class="n">y_pred_dt</span> <span class="o">=</span> <span class="n">model_dt</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">y_proba_dt</span> <span class="o">=</span> <span class="n">model_dt</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== Decision Tree (Tuned) ===&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Parameter terbaik:&quot;</span><span class="p">,</span> <span class="n">grid</span><span class="o">.</span><span class="n">best_params_</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Parameter terbaik: {&#39;criterion&#39;: &#39;entropy&#39;, &#39;max_depth&#39;: 3, &#39;min_samples_leaf&#39;: 1}
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="evaluasi-model">
-<h2>5. Evaluasi Model<a class="headerlink" href="#evaluasi-model" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Ukur performa menggunakan:</p>
-<ul>
-<li><p><strong>Accuracy</strong>, <strong>Precision</strong>, <strong>Recall</strong>, <strong>F1‑score</strong>, <strong>ROC-AUC</strong>.</p></li>
-</ul>
-</li>
-<li><p>Tampilkan:</p>
-<ul>
-<li><p><strong>Confusion matrix</strong>.</p></li>
-<li><p><strong>ROC curve</strong> dengan AUC.</p></li>
-</ul>
-</li>
-<li><p>Interpretasi hasil:</p>
-<ul>
-<li><p>Bandingkan performance antar parameter; seimbangkan antara overfitting (terlalu dalam) dan underfitting (terlalu dangkal).</p></li>
-</ul>
-</li>
-</ul>
-<p>Setelah model terbaik diperoleh melalui proses Grid Search, dilakukan evaluasi kinerjanya menggunakan data uji. Prediksi dilakukan dalam dua bentuk: kelas prediksi (<code class="docutils literal notranslate"><span class="pre">y_pred</span></code>) dan probabilitas prediksi (<code class="docutils literal notranslate"><span class="pre">y_proba</span></code>). Kelas prediksi digunakan untuk evaluasi klasifikasi secara umum, sedangkan probabilitas digunakan untuk analisis lebih lanjut seperti ROC Curve.</p>
-<section id="evaluasi-klasifikasi">
-<h3>Evaluasi Klasifikasi<a class="headerlink" href="#evaluasi-klasifikasi" title="Link to this heading">#</a></h3>
-<ol class="arabic simple">
-<li><p><strong>Classification Report</strong>
-Fungsi <code class="docutils literal notranslate"><span class="pre">classification_report</span></code> dari <code class="docutils literal notranslate"><span class="pre">sklearn.metrics</span></code> menghasilkan metrik evaluasi standar klasifikasi: precision, recall, f1-score, dan support untuk masing-masing kelas. Metrik ini berguna untuk melihat kekuatan dan kelemahan model, terutama pada klasifikasi biner dengan distribusi kelas yang tidak seimbang.</p></li>
-<li><p><strong>Confusion Matrix</strong>
-Matriks ini menampilkan jumlah prediksi benar dan salah untuk masing-masing kelas. Nilai ini membantu memahami tipe kesalahan yang paling sering dilakukan model (false positives dan false negatives).</p></li>
-</ol>
-</section>
-<section id="analisis-roc-curve-dan-auc">
-<h3>Analisis ROC Curve dan AUC<a class="headerlink" href="#analisis-roc-curve-dan-auc" title="Link to this heading">#</a></h3>
-<ol class="arabic" start="3">
-<li><p><strong>ROC Curve dan AUC Score</strong>
-ROC (Receiver Operating Characteristic) Curve dibuat dengan menghitung True Positive Rate (TPR) dan False Positive Rate (FPR) dari probabilitas prediksi. Skor AUC (Area Under the Curve) dihitung menggunakan <code class="docutils literal notranslate"><span class="pre">roc_auc_score</span></code> dan mencerminkan kemampuan model membedakan antara dua kelas. Nilai AUC mendekati 1 menandakan model yang sangat baik.</p>
-<p>Visualisasi ROC Curve menampilkan kurva TPR terhadap FPR. Garis diagonal abu-abu sebagai referensi menggambarkan model acak. Kurva model yang berada jauh di atas garis tersebut menunjukkan performa yang lebih baik dari tebakan acak.</p>
-</li>
-</ol>
-</section>
-<section id="visualisasi-struktur-pohon-keputusan">
-<h3>Visualisasi Struktur Pohon Keputusan<a class="headerlink" href="#visualisasi-struktur-pohon-keputusan" title="Link to this heading">#</a></h3>
-<ol class="arabic simple" start="4">
-<li><p><strong>Visualisasi Decision Tree</strong>
-Setelah evaluasi, dilakukan visualisasi struktur pohon keputusan menggunakan <code class="docutils literal notranslate"><span class="pre">plot_tree</span></code>. Visualisasi ini menunjukkan bagaimana model membuat keputusan berdasarkan fitur-fitur yang digunakan, nilai split, dan distribusi kelas di setiap node. Visualisasi membantu dalam interpretasi model karena Decision Tree bersifat transparan dan mudah dipahami.</p></li>
-</ol>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">roc_curve</span><span class="p">,</span> <span class="n">roc_auc_score</span>
+<span class="n">cm_dt</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_dt</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Confusion Matrix:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">cm_dt</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Classification Report:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_dt</span><span class="p">))</span>
+<span class="n">acc_dt</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_dt</span><span class="p">)</span>
+<span class="n">roc_dt</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_proba_dt</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy:&quot;</span><span class="p">,</span> <span class="n">acc_dt</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ROC-AUC:&quot;</span><span class="p">,</span> <span class="n">roc_dt</span><span class="p">)</span>
 
-<span class="c1"># Prediksi dan evaluasi</span>
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="n">y_proba</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
-
-<span class="c1"># Classification report</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Classification Report:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
-
-<span class="c1"># Confusion matrix</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Confusion Matrix:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+<span class="c1"># CM Heatmap</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">cm_dt</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Greens&quot;</span><span class="p">,</span>
+            <span class="n">xticklabels</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Negatif&quot;</span><span class="p">,</span> <span class="s2">&quot;Positif&quot;</span><span class="p">],</span>
+            <span class="n">yticklabels</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Negatif&quot;</span><span class="p">,</span> <span class="s2">&quot;Positif&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Decision Tree - Confusion Matrix&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Predicted&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Actual&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
 <span class="c1"># ROC Curve</span>
-<span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">roc_curve</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_proba</span><span class="p">)</span>
-<span class="n">roc_score</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_proba</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ROC AUC Score:&quot;</span><span class="p">,</span> <span class="n">roc_score</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;AUC = </span><span class="si">{</span><span class="n">roc_score</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">fpr_dt</span><span class="p">,</span> <span class="n">tpr_dt</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">roc_curve</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_proba_dt</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fpr_dt</span><span class="p">,</span> <span class="n">tpr_dt</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;AUC = </span><span class="si">{</span><span class="n">roc_dt</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;k--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Decision Tree - ROC Curve&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;False Positive Rate&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;True Positive Rate&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;ROC Curve&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
-<span class="c1"># Visualisasi pohon</span>
-<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">plot_tree</span>
+<span class="c1"># Tree Visual</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
-<span class="n">plot_tree</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">class_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;No&quot;</span><span class="p">,</span> <span class="s2">&quot;Yes&quot;</span><span class="p">],</span> <span class="n">filled</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Visualisasi Pohon Keputusan&quot;</span><span class="p">)</span>
+<span class="n">plot_tree</span><span class="p">(</span><span class="n">model_dt</span><span class="p">,</span>
+          <span class="n">feature_names</span><span class="o">=</span><span class="n">X_train</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span>  <span class="c1"># Jika bukan DataFrame, ganti manual</span>
+          <span class="n">class_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Tidak Sakit&quot;</span><span class="p">,</span> <span class="s2">&quot;Sakit&quot;</span><span class="p">],</span>
+          <span class="n">filled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">rounded</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Pohon Keputusan - Decision Tree&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># === RANDOM FOREST ===</span>
+<span class="n">rf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">rf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">y_pred_rf</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">y_proba_rf</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== Random Forest ===&quot;</span><span class="p">)</span>
+<span class="n">cm_rf</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_rf</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Confusion Matrix:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">cm_rf</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Classification Report:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_rf</span><span class="p">))</span>
+<span class="n">acc_rf</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_rf</span><span class="p">)</span>
+<span class="n">roc_rf</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_proba_rf</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy:&quot;</span><span class="p">,</span> <span class="n">acc_rf</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ROC-AUC:&quot;</span><span class="p">,</span> <span class="n">roc_rf</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">cm_rf</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Purples&quot;</span><span class="p">,</span>
+            <span class="n">xticklabels</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Negatif&quot;</span><span class="p">,</span> <span class="s2">&quot;Positif&quot;</span><span class="p">],</span>
+            <span class="n">yticklabels</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Negatif&quot;</span><span class="p">,</span> <span class="s2">&quot;Positif&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Random Forest - Confusion Matrix&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Predicted&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Actual&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">fpr_rf</span><span class="p">,</span> <span class="n">tpr_rf</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">roc_curve</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_proba_rf</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fpr_rf</span><span class="p">,</span> <span class="n">tpr_rf</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;AUC = </span><span class="si">{</span><span class="n">roc_rf</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;purple&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;k--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Random Forest - ROC Curve&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;False Positive Rate&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;True Positive Rate&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># === NAIVE BAYES ===</span>
+<span class="n">nb</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
+<span class="n">nb</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">y_pred_nb</span> <span class="o">=</span> <span class="n">nb</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">y_proba_nb</span> <span class="o">=</span> <span class="n">nb</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== Naive Bayes ===&quot;</span><span class="p">)</span>
+<span class="n">cm_nb</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_nb</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Confusion Matrix:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">cm_nb</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Classification Report:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_nb</span><span class="p">))</span>
+<span class="n">acc_nb</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_nb</span><span class="p">)</span>
+<span class="n">roc_nb</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_proba_nb</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy:&quot;</span><span class="p">,</span> <span class="n">acc_nb</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ROC-AUC:&quot;</span><span class="p">,</span> <span class="n">roc_nb</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">cm_nb</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Oranges&quot;</span><span class="p">,</span>
+            <span class="n">xticklabels</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Negatif&quot;</span><span class="p">,</span> <span class="s2">&quot;Positif&quot;</span><span class="p">],</span>
+            <span class="n">yticklabels</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Negatif&quot;</span><span class="p">,</span> <span class="s2">&quot;Positif&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Naive Bayes - Confusion Matrix&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Predicted&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Actual&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">fpr_nb</span><span class="p">,</span> <span class="n">tpr_nb</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">roc_curve</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_proba_nb</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fpr_nb</span><span class="p">,</span> <span class="n">tpr_nb</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;AUC = </span><span class="si">{</span><span class="n">roc_nb</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;k--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Naive Bayes - ROC Curve&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;False Positive Rate&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;True Positive Rate&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Classification Report:
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Decision Tree (Tuned) ===
+Parameter terbaik: {&#39;criterion&#39;: &#39;entropy&#39;, &#39;max_depth&#39;: 3, &#39;min_samples_leaf&#39;: 1}
+Confusion Matrix:
+ [[39  9]
+ [12 30]]
 
+Classification Report:
               precision    recall  f1-score   support
 
            0       0.76      0.81      0.79        48
@@ -923,16 +969,149 @@ Setelah evaluasi, dilakukan visualisasi struktur pohon keputusan menggunakan <co
    macro avg       0.77      0.76      0.76        90
 weighted avg       0.77      0.77      0.77        90
 
-Confusion Matrix:
-[[39  9]
- [12 30]]
-ROC AUC Score: 0.8653273809523809
+Accuracy: 0.7666666666666667
+ROC-AUC: 0.8653273809523809
 </pre></div>
 </div>
-<img alt="_images/0d1260c80f263f127bd21e3a673e22ea6f0df68ef8d88ef5b8e1621864f8e3b8.png" src="_images/0d1260c80f263f127bd21e3a673e22ea6f0df68ef8d88ef5b8e1621864f8e3b8.png" />
-<img alt="_images/535da06c32646f0d9622197ad10fb8d2680e53c16c9953347f03155e1d3a7f9d.png" src="_images/535da06c32646f0d9622197ad10fb8d2680e53c16c9953347f03155e1d3a7f9d.png" />
+<img alt="_images/f90b923ff755e2f702868dbd7c54a4f61ac9bfe05c9fdec20fe392aaa95382f6.png" src="_images/f90b923ff755e2f702868dbd7c54a4f61ac9bfe05c9fdec20fe392aaa95382f6.png" />
+<img alt="_images/16d9c011f7c857743510371aaf94950bdb0889be21180224bd4dd6c6ed7e808e.png" src="_images/16d9c011f7c857743510371aaf94950bdb0889be21180224bd4dd6c6ed7e808e.png" />
+<img alt="_images/d05a48762a5c1735c81c0370ae760dec11a3f79491cf043c95cee54ac98cf36b.png" src="_images/d05a48762a5c1735c81c0370ae760dec11a3f79491cf043c95cee54ac98cf36b.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Random Forest ===
+Confusion Matrix:
+ [[43  5]
+ [14 28]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.75      0.90      0.82        48
+           1       0.85      0.67      0.75        42
+
+    accuracy                           0.79        90
+   macro avg       0.80      0.78      0.78        90
+weighted avg       0.80      0.79      0.79        90
+
+Accuracy: 0.7888888888888889
+ROC-AUC: 0.9151785714285714
+</pre></div>
+</div>
+<img alt="_images/3659f45ee3ab7705511b85fa490ea0463747701587943510d3736f8a2f0877b8.png" src="_images/3659f45ee3ab7705511b85fa490ea0463747701587943510d3736f8a2f0877b8.png" />
+<img alt="_images/77e8c3b318baaeb084a988c7c4524a52106ec2e7d277f25a4043f5ad64ca3bd4.png" src="_images/77e8c3b318baaeb084a988c7c4524a52106ec2e7d277f25a4043f5ad64ca3bd4.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Naive Bayes ===
+Confusion Matrix:
+ [[41  7]
+ [10 32]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.80      0.85      0.83        48
+           1       0.82      0.76      0.79        42
+
+    accuracy                           0.81        90
+   macro avg       0.81      0.81      0.81        90
+weighted avg       0.81      0.81      0.81        90
+
+Accuracy: 0.8111111111111111
+ROC-AUC: 0.9057539682539683
+</pre></div>
+</div>
+<img alt="_images/6d282608e752969f34a2da665c6585404f85c0e93e3ca6709261f7a840c6dcc2.png" src="_images/6d282608e752969f34a2da665c6585404f85c0e93e3ca6709261f7a840c6dcc2.png" />
+<img alt="_images/45530bc5b000d2614ded30d385eb7e840aaf05b7e210d18f83f235b85f37a273.png" src="_images/45530bc5b000d2614ded30d385eb7e840aaf05b7e210d18f83f235b85f37a273.png" />
 </div>
 </div>
+</section>
+<section id="evaluasi-model">
+<h2>5.	Evaluasi Model<a class="headerlink" href="#evaluasi-model" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># === GRAFIK PERBANDINGAN AKURASI ===</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Nama model dan akurasinya</span>
+<span class="n">model_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Decision Tree&#39;</span><span class="p">,</span> <span class="s1">&#39;Random Forest&#39;</span><span class="p">,</span> <span class="s1">&#39;Naive Bayes&#39;</span><span class="p">]</span>
+<span class="n">accuracies</span> <span class="o">=</span> <span class="p">[</span><span class="n">acc_dt</span><span class="p">,</span> <span class="n">acc_rf</span><span class="p">,</span> <span class="n">acc_nb</span><span class="p">]</span>
+
+<span class="c1"># Buat bar chart</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">model_names</span><span class="p">,</span> <span class="n">accuracies</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">)</span>
+
+<span class="c1"># Tambahkan label angka akurasi di atas batang</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">acc</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">accuracies</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">acc</span> <span class="o">+</span> <span class="mf">0.01</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">acc</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Perbandingan Akurasi Model&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Akurasi&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/3f65f1ac3a169faba1956b2b902ad82fd4f348f248fe7dfb18de9fa746899284.png" src="_images/3f65f1ac3a169faba1956b2b902ad82fd4f348f248fe7dfb18de9fa746899284.png" />
+</div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Model</p></th>
+<th class="head"><p>Accuracy</p></th>
+<th class="head"><p>Precision (avg)</p></th>
+<th class="head"><p>Recall (avg)</p></th>
+<th class="head"><p>F1-score (avg)</p></th>
+<th class="head"><p>ROC-AUC</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Decision Tree</strong></p></td>
+<td><p>0.767</p></td>
+<td><p>0.77</p></td>
+<td><p>0.76</p></td>
+<td><p>0.76</p></td>
+<td><p>0.865</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Random Forest</strong></p></td>
+<td><p>0.789</p></td>
+<td><p>0.80</p></td>
+<td><p>0.78</p></td>
+<td><p>0.78</p></td>
+<td><p>0.915</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Naive Bayes</strong></p></td>
+<td><p><strong>0.811</strong></p></td>
+<td><p><strong>0.81</strong></p></td>
+<td><p><strong>0.81</strong></p></td>
+<td><p><strong>0.81</strong></p></td>
+<td><p>0.906</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="kesimpulan-perbandingan-model">
+<h3>**Kesimpulan Perbandingan Model:<a class="headerlink" href="#kesimpulan-perbandingan-model" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Naive Bayes</strong> menunjukkan performa <strong>terbaik secara keseluruhan</strong>:</p>
+<ul class="simple">
+<li><p>Akurasi tertinggi (<strong>81.1%</strong>)</p></li>
+<li><p>Precision, recall, dan f1-score <em>macro average</em> juga tertinggi (<strong>0.81</strong>)</p></li>
+<li><p>Hasil ini menunjukkan Naive Bayes mampu memprediksi kedua kelas (sakit &amp; tidak sakit) secara seimbang.</p></li>
+</ul>
+</li>
+<li><p><strong>Random Forest</strong> memiliki <strong>ROC-AUC tertinggi</strong> (<strong>91.5%</strong>)</p>
+<ul class="simple">
+<li><p>Artinya, Random Forest sangat baik dalam <strong>membedakan antara kelas positif dan negatif</strong>.</p></li>
+<li><p>Meskipun akurasinya sedikit lebih rendah dari Naive Bayes, model ini cenderung <strong>lebih kuat</strong> dalam kasus <strong>imbalance</strong> atau <strong>noise</strong>.</p></li>
+</ul>
+</li>
+<li><p><strong>Decision Tree (tuned)</strong> memiliki performa paling rendah:</p>
+<ul class="simple">
+<li><p>Akurasi hanya <strong>76.7%</strong></p></li>
+<li><p>F1-score dan ROC-AUC juga lebih rendah dibandingkan dua model lainnya.</p></li>
+<li><p>Namun, model ini <strong>paling mudah dijelaskan dan divisualisasikan</strong> (interpretable).</p></li>
+</ul>
+</li>
+</ol>
 </section>
 </section>
 </section>
@@ -994,18 +1173,16 @@ ROC AUC Score: 0.8653273809523809
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-set">1. Data Set</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understanding">2.	Data understanding</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understanding">2.	Data Understanding</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-fitur-atau-variable-data">a.	Fitur atau variable data</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-ekplorasi-data">b. Ekplorasi data</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-visualisasi">c. Visualisasi</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preprocessing">3. Data Preprocessing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-decision-tree-classification">4. Model: Decision Tree Classification</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-model">5. Evaluasi Model</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-klasifikasi">Evaluasi Klasifikasi</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-roc-curve-dan-auc">Analisis ROC Curve dan AUC</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-struktur-pohon-keputusan">Visualisasi Struktur Pohon Keputusan</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-decision-tree-random-forest-naive-bayes-classification">4. Model: Decision Tree, Random Forest, Naive Bayes Classification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-model">5.	Evaluasi Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kesimpulan-perbandingan-model">**Kesimpulan Perbandingan Model:</a></li>
 </ul>
 </li>
 </ul>
